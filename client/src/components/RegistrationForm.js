@@ -74,7 +74,7 @@ const FormikRegister = withFormik({
 
   handleSubmit(values, {setStatus}) {
     axios 
-      .post('', values) 
+      .post('', values)  // ENTER REGISTRATION ENDPOINT
       .then(res => {
         setStatus(res.data)
       })
