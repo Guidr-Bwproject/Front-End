@@ -124,3 +124,10 @@ input {
   cursor: pointer;
   color: #496e1b;
 }
+
+.header{
+  font-size: 2rem;
+  color: #314b11;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+}
