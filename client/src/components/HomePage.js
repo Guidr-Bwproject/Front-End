@@ -8,7 +8,7 @@ export default function HomePage() {
 
   useEffect(() =>{
     axios
-      .get()
+      .get('https://rickandmortyapi.com/api/character/')
       .then(response =>{
         setTrips(response.data.results)
       })
