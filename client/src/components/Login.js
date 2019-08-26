@@ -41,6 +41,7 @@ const Login = ({ errors, touched, values, status }) => {
         <br></br>
 
         <button className='loginButton'>Login</button>
+        <p>Don't have an account? <span className="accountLink">Sign Up</span></p>
       </Form>
     </div>
   )

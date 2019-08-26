@@ -3,6 +3,10 @@ import './App.css';
 import GuidrImg from './imgs/Guidr Logo.svg'
 
 import Login from './components/Login'
+// import Profile from './components/Profile'
+// import Register from './components/Registration'
+
+import { Route } from 'react-router-dom'
 
 function App() {
   return (
@@ -22,6 +26,12 @@ function App() {
        
       </div>
       <Login />
+
+      {/* <Route path='/' exact component={Home} /> */}
+      {/* <Route path='/profile' exact component={Profile} /> */}
+      <Route path='/login' exact component={Login} />
+      {/* <Route path='/signup' exact component={Registration} /> */}
+
     </div>
   );
 }
