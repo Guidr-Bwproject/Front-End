@@ -3,6 +3,7 @@ import './App.css';
 import GuidrImg from './imgs/Guidr Logo.svg'
 
 import Login from './components/Login'
+import FormikRegister from './components/RegistrationForm';
 // import Profile from './components/Profile'
 // import Register from './components/Registration'
 
@@ -26,6 +27,7 @@ function App() {
        
       </div>
       <Login />
+      <FormikRegister />
 
       {/* <Route path='/' exact component={Home} /> */}
       {/* <Route path='/profile' exact component={Profile} /> */}
