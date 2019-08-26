@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import * as Yup from 'yup';
+import * as Yup from 'yup'
 import axios from 'axios';
 import { Form, Field, withFormik } from 'formik';
 
@@ -13,8 +13,8 @@ const Login = ({ errors, touched, values, status }) => {
   }, [status])
 
   return (
-    <div className="form-container">
-      <h1>Login</h1>
+    <div className="loginPage">
+      <h1>Adventure Awaits</h1>
       <Form>
         <Field 
           className="input"
@@ -26,6 +26,7 @@ const Login = ({ errors, touched, values, status }) => {
         {touched.username && errors.username && (
           <p className="error">{errors.username}</p>
         )}
+        <br></br>
 
         <Field 
           className="input"
@@ -37,8 +38,9 @@ const Login = ({ errors, touched, values, status }) => {
         {touched.password && errors.password && (
           <p className="error">{errors.password}</p>
         )}
+        <br></br>
 
-        <button>Login</button>
+        <button className='loginButton'>Login</button>
       </Form>
     </div>
   )
