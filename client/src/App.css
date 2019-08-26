@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+ 
+ 
 }
 
 .App-logo {
@@ -30,4 +32,93 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+body {
+  background-image: url('./imgs/wynand-van-poortvliet-KQwl5RnZAqg-unsplash.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height: 100%;
+
+}
+
+.navBar {
+  background-color: rgba(255, 255, 255, 0.295);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:20px;
+  height: 25px;
+  
+}
+
+.navBar .logo {
+  
+ }
+
+ .navBar .links {
+   display: flex;
+   
+ }
+
+ .navBar .links a {
+   padding: 15px;
+   font-size: 20px;
+   text-decoration: none;
+   color: rgb(109, 109, 109);
+ }
+
+ .loginPage {
+   display: flex;
+   flex-direction: column;
+   width: fit-content;
+   background-color: white;
+   padding: 20px;
+   border-radius: 10px;
+   margin: 300px;
+   
+ }
+
+ .loginPage h1 {
+   background-color: #314b11;
+    color: white;
+ }
+
+input {
+   padding: 20px;
+   margin: 10px;
+   border: solid 1px lightgrey;
+   border-radius: 5px;
+  
+   
+ }
+
+ 
+
+ .loginButton {
+   padding: 10px;
+   padding-left: 30px;
+   padding-right: 30px;
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #314b11;
+  color: white;
+  transition: .4s;
+ }
+
+ .loginButton:hover {
+   cursor: pointer;
+   background-color: #496e1b;
+ }
+
+ .accountLink {
+   color: #314b11;
+   font-weight: bold;
+ }
+
+ .accountLink:hover {
+  cursor: pointer;
+  color: #496e1b;
 }
