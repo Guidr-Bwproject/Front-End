@@ -31,3 +31,9 @@
     transform: rotate(360deg);
   }
 }
+
+.homePageView{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}

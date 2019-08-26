@@ -11,12 +11,12 @@ import {Card, Icon, Image} from "semantic-ui-react";
 //   )
 // }
 
-export default function HomePageCards ({image}){
+export default function HomePageCards ({name,image,species}){
   return(
     <Card
-      header="Mount Timpanogas"
+      header={`this will be the trip name ${name}`}
       image={image}
-      description="stuff and things"
+      description={`this will be the description for the trip...${species}`}
     />
   )
 }
