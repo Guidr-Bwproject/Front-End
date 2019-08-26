@@ -16,9 +16,12 @@ export default function HomePage() {
 
   return(
     <section className="homePageView">
+      <h1>Browse the Trips!</h1>
+      <div className="homePageCards">
       {trips.map(trip =>{
         return <HomePageCards key={trip.id} {...trip} />;
       })}
+      </div>
     </section>
   );
 }
