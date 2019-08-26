@@ -2,14 +2,14 @@ import React from 'react';
 import './App.css';
 import HomePage from "./components/HomePage";
 
-import Login from './components/Login'
+// import Login from './components/Login'
 
 function App() {
   return (
     <div className="App">
       <HomePage />
 
-      <Login />
+      {/* <Login /> */}
     </div>
   );
 }

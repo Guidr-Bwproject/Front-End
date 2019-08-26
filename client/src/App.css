@@ -32,8 +32,14 @@
   }
 }
 
-.homePageCards{
+.feedCards{
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: space-evenly;
+  border: 2px solid green;
+  width: 60%;
+  margin: auto;
 }
+
+
+

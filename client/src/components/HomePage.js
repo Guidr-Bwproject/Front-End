@@ -3,6 +3,7 @@ import axios from "axios";
 import HomePageCards from "./HomePageCards";
 
 
+
 export default function HomePage() {
   const [trips, setTrips] = useState([]);
 
@@ -16,8 +17,7 @@ export default function HomePage() {
 
   return(
     <section className="homePageView">
-      <h1>Browse Guidr Trips!</h1>
-      <div className="homePageCards">
+      <div className="feedCards">
       {trips.map(trip =>{
         return <HomePageCards key={trip.id} {...trip} />;
       })}
