@@ -1,9 +1,11 @@
+
 import React, { useState, useEffect } from 'react';
-import * as Yup from 'yup'
+import * as Yup from 'yup';
 import axios from 'axios';
 import { Form, Field, withFormik } from 'formik';
 
-const Login = ({ errors, touched, values, status }) => {
+
+const Registration = ({ errors, touched, values, status }) => {
   
   const [user, setUser] = useState([])
   useEffect(() => {
@@ -13,8 +15,8 @@ const Login = ({ errors, touched, values, status }) => {
   }, [status])
 
   return (
-    <div className="loginPage">
-      <h1>Adventure Awaits</h1>
+    <div className="loginForm">
+      <h1>Register</h1>
       <Form>
         <Field 
           className="input"
@@ -26,7 +28,17 @@ const Login = ({ errors, touched, values, status }) => {
         {touched.username && errors.username && (
           <p className="error">{errors.username}</p>
         )}
-        <br></br>
+
+        <Field
+            className="input"
+            type="email"
+            name="email"
+            placeholder="Email Address"
+
+            />
+            {touched.email && errors.email && (
+          <p className="error">{errors.email}</p>
+            )}
 
         <Field 
           className="input"
@@ -38,36 +50,36 @@ const Login = ({ errors, touched, values, status }) => {
         {touched.password && errors.password && (
           <p className="error">{errors.password}</p>
         )}
-        <br></br>
 
-        <button className='loginButton'>Login</button>
-        <p>Don't have an account? <span className="accountLink">Sign Up</span></p>
+        <button>Register</button>
       </Form>
     </div>
   )
 }
 
-const FormikLogin = withFormik({
-  mapPropsToValues({ username, password }) {
+const FormikRegister = withFormik({
+  mapPropsToValues({ username, password, email }) {
     return {
       username: username || '',
       password: password || '',
+      email: email || ''
     }
   },
 
   validationSchema: Yup.object().shape({
     username: Yup.string().required('Username is required!'),
-    password: Yup.string().required('Password is required!')
+    password: Yup.string().required('Password is required!'),
+    email: Yup.string().required('Email is required')
   }),
 
   handleSubmit(values, {setStatus}) {
     axios 
-      .post('', values) // ENTER LOGIN ENDPOINT
+      .post('', values)  // ENTER REGISTRATION ENDPOINT
       .then(res => {
         setStatus(res.data)
       })
       .catch(err => console.log(err.response))
   }
-})(Login)
+})(Registration)
 
-export default FormikLogin;
+export default FormikRegister;
