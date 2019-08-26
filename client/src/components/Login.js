@@ -1,11 +1,9 @@
-
 import React, { useState, useEffect } from 'react';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { Form, Field, withFormik } from 'formik';
 
-
-const Registration = ({ errors, touched, values, status }) => {
+const Login = ({ errors, touched, values, status }) => {
   
   const [user, setUser] = useState([])
   useEffect(() => {
@@ -15,8 +13,8 @@ const Registration = ({ errors, touched, values, status }) => {
   }, [status])
 
   return (
-    <div className="loginForm">
-      <h1>Register</h1>
+    <div className="form-container">
+      <h1>Login</h1>
       <Form>
         <Field 
           className="input"
@@ -29,17 +27,6 @@ const Registration = ({ errors, touched, values, status }) => {
           <p className="error">{errors.username}</p>
         )}
 
-        <Field
-            className="input"
-            type="email"
-            name="email"
-            placeholder="Email Address"
-
-            />
-            {touched.email && errors.email && (
-          <p className="error">{errors.email}</p>
-            )}
-
         <Field 
           className="input"
           type="password"
@@ -51,25 +38,23 @@ const Registration = ({ errors, touched, values, status }) => {
           <p className="error">{errors.password}</p>
         )}
 
-        <button>Register</button>
+        <button>Login</button>
       </Form>
     </div>
   )
 }
 
-const FormikRegister = withFormik({
-  mapPropsToValues({ username, password, email }) {
+const FormikLogin = withFormik({
+  mapPropsToValues({ username, password }) {
     return {
       username: username || '',
       password: password || '',
-      email: email || ''
     }
   },
 
   validationSchema: Yup.object().shape({
     username: Yup.string().required('Username is required!'),
-    password: Yup.string().required('Password is required!'),
-    email: Yup.string().required('Email is required')
+    password: Yup.string().required('Password is required!')
   }),
 
   handleSubmit(values, {setStatus}) {
@@ -80,6 +65,6 @@ const FormikRegister = withFormik({
       })
       .catch(err => console.log(err.response))
   }
-})(Registration)
+})(Login)
 
-export default FormikRegister;
+export default FormikLogin;
