@@ -27,12 +27,8 @@ function App() {
         </div>
        
       </div>
-
-      <HomePage />
    
-
-
-      {/* <Route path='/' exact component={Home} /> */}
+      <Route exact path='/' exact component={HomePage} />
       <Route exact path='/profile' exact component={Profile} />
       <Route exact path='/login' exact component={Login} />
       <Route exact path='/signup' exact component={FormikRegister} />
