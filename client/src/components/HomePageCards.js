@@ -5,54 +5,22 @@ import {Route, Link} from "react-router-dom";
 import styled from "styled-components";
 
 
-export default function HomePageCards ({name,species}){
+export default function HomePageCards ({name, title, date, description}){
   return(
     <StyledHomeCards>
     <div className="homeCard">
     <Card className="CardContainer">
       <Image src={Mountain} fluid className="cardImage"/>
       <Card.Content style={{padding: "1% 5%"}}>
-        <Card.Header className="cardHeader">Super fun sounding trip {name}</Card.Header>
+        <Card.Header className="cardHeader">Super fun sounding trip {title}</Card.Header>
         <Card.Meta className="cardMeta">
-        <Link to="/${guideProfile}" className="cardGuideLink">Guide Name | Date</Link>
+        <Link to="/${user-id}" className="cardGuideLink">Guide Name{name} | Date{date}</Link>
         </Card.Meta>
         <Card.Description style={{textAlign: "left", width: "80%", margin: "auto"}}>
-        Muskellunge trout combtail gourami sea raven sole porbeagle shark freshwater hatchetfish spinefoot limia ghoul. Barbeled dragonfish sturgeon beardfish, mud catfish rockfish blue danio. Dogfish sabertooth {species}
+        Muskellunge trout combtail gourami sea raven sole porbeagle shark freshwater hatchetfish spinefoot limia ghoul. Barbeled dragonfish sturgeon beardfish, mud catfish rockfish blue danio. Dogfish sabertooth {description}
         </Card.Description>
         <Card.Description className="cardLink">
-        <Link to="/${trip}" className="homePageCardLink">Click here for trip details</Link>
-        </Card.Description>
-      </Card.Content>
-    </Card>
-
-    <Card className="CardContainer">
-      <Image src={Mountain} fluid className="cardImage"/>
-      <Card.Content style={{padding: "1% 5%"}}>
-        <Card.Header className="cardHeader">Super fun sounding trip {name}</Card.Header>
-        <Card.Meta className="cardMeta">
-        <Link to="/${guideProfile}" className="cardGuideLink">Guide Name | Date</Link>
-        </Card.Meta>
-        <Card.Description style={{textAlign: "left", width: "80%", margin: "auto"}}>
-        Muskellunge trout combtail gourami sea raven sole porbeagle shark freshwater hatchetfish spinefoot limia ghoul. Barbeled dragonfish sturgeon beardfish, mud catfish rockfish blue danio. Dogfish sabertooth {species}
-        </Card.Description>
-        <Card.Description className="cardLink">
-        <Link to="/${trip}" className="homePageCardLink">Click here for trip details</Link>
-        </Card.Description>
-      </Card.Content>
-    </Card>
-
-    <Card className="CardContainer">
-      <Image src={Mountain} fluid className="cardImage"/>
-      <Card.Content style={{padding: "1% 5%"}}>
-        <Card.Header className="cardHeader">Super fun sounding trip {name}</Card.Header>
-        <Card.Meta className="cardMeta">
-        <Link to="/${guideProfile}" className="cardGuideLink">Guide Name | Date</Link>
-        </Card.Meta>
-        <Card.Description style={{textAlign: "left", width: "80%", margin: "auto"}}>
-        Muskellunge trout combtail gourami sea raven sole porbeagle shark freshwater hatchetfish spinefoot limia ghoul. Barbeled dragonfish sturgeon beardfish, mud catfish rockfish blue danio. Dogfish sabertooth {species}
-        </Card.Description>
-        <Card.Description className="cardLink">
-        <Link to="/${trip}" className="homePageCardLink">Click here for trip details</Link>
+        <Link to="/${trip-id}" className="homePageCardLink">Click here for trip details</Link>
         </Card.Description>
       </Card.Content>
     </Card>

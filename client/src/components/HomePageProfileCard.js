@@ -1,5 +1,5 @@
 import React from "react";
-import {Card, Image} from "semantic-ui-react";
+import {Card, Icon, Image} from "semantic-ui-react";
 import JennHiking from "../imgs/JennHiking2.jpg";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
@@ -30,6 +30,10 @@ border-radius: 10px;
 background-color: #f7f7f7;
 box-shadow: 0px 5px 5px;
 opacity: .8;
+
+@media screen and (max-width:1000px){
+  width: 70%;
+}
 }
 
 .userLink {
