@@ -84,6 +84,7 @@ const FormikRegister = withFormik({
       .then(res => {
         console.log('register', res.data)
         setStatus(res.data)
+        // localStorage.setItem(res.data.token)
         props.history.push('/profile')
       })
       .catch(err => console.log(err.response))
