@@ -80,7 +80,7 @@ const FormikRegister = withFormik({
 
   handleSubmit(values, {setStatus}) {
     axios 
-      .post('', values)  // ENTER REGISTRATION ENDPOINT
+      .post('https://guidr-app.herokuapp.com/api/auth/register', values)  // ENTER REGISTRATION ENDPOINT
       .then(res => {
         setStatus(res.data)
       })
