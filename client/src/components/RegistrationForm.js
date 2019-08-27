@@ -2,11 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { Form, Field, withFormik} from 'formik';
-import {Link} from 'react-router-dom'
+import { Form, Field, withFormik } from 'formik';
+import { Link } from 'react-router-dom'
 
 
-const Registration = ({ errors, touched, values, status }) => {
+const Registration = ({ history, errors, touched, values, status }) => {
   
   const [user, setUser] = useState([])
   useEffect(() => {
@@ -53,9 +53,9 @@ const Registration = ({ errors, touched, values, status }) => {
         )}
 
         <button className='loginButton'>Register</button>
-        <p className="accountText">Already have an account?{' '}
+        <p className="accountText">Already have an account?{'Log in'}
           <Link to='/login' className="accountLink">
-             Log in
+            Log in
           </Link>
         </p>
       </Form>
@@ -78,13 +78,16 @@ const FormikRegister = withFormik({
     email: Yup.string().required('Email is required')
   }),
 
-  handleSubmit(values, {setStatus}) {
+  handleSubmit(values, {props, setStatus}) {
     axios 
       .post('https://guidr-app.herokuapp.com/api/auth/register', values)  // ENTER REGISTRATION ENDPOINT
       .then(res => {
+          console.log('register', res.data)
         setStatus(res.data)
+        props.history.push(`/`);
       })
       .catch(err => console.log(err.response))
+      
   }
 })(Registration)
 
