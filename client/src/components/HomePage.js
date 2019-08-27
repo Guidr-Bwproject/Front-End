@@ -63,6 +63,8 @@ const StyledHomePage = styled.div `
   flex-direction: column;
   align-items: center;
   margin-top: 5%;
+  position: fixed;
+  right: 60%;
 
   @media screen and (max-width: 500px){
     width: 100%;
