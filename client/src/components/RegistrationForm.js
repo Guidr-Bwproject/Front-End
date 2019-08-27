@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { Form, Field, withFormik} from 'formik';
-import {Link} from 'react-router-dom'
+import { Form, Field, withFormik } from 'formik';
+import { Link } from 'react-router-dom'
 
 
 const Registration = ({ history, errors, touched, values, status }) => {
@@ -52,7 +52,7 @@ const Registration = ({ history, errors, touched, values, status }) => {
           <p className="error">{errors.password}</p>
         )}
 
-<Field 
+        <Field 
           className="input"
           type="password"
           name="confirmPassword"
@@ -63,10 +63,50 @@ const Registration = ({ history, errors, touched, values, status }) => {
           <p className="error">{errors.confirmPassword}</p>
         )}
 
+        <Field 
+        type="text" 
+        name="title" 
+        placeholder="Enter Title of Trip"
+
+        />
+        {touched.title && errors.title && (
+            <p classname="error">{errors.title}</p>
+        )}
+
+        <Field 
+        type="text" 
+        name="tagline" 
+        placeholder="Enter Short Description of Trip"
+
+        />
+        {touched.tagline && errors.tagline && (
+            <p classname="error">{errors.tagline}</p>
+         )}
+                
+        <Field 
+        type="age" 
+        name="age" 
+        placeholder="Enter Your Age"
+
+        />
+        {touched.age && errors.age && (
+            <p classname="error">{errors.age}</p>
+        )}
+                
+        <Field 
+        type="time" 
+        name="time" 
+        placeholder="Enter How Long You Have Been A Guide"
+
+        />
+        {touched.time && errors.time && (
+             <p classname="error">{errors.time}</p>
+        )}
+
         <button className='loginButton'>Register</button>
-        <p className="accountText">Already have an account?{' '}
+        <p className="accountText">Already have an account?{'Log in'}
           <Link to='/login' className="accountLink">
-             Log in
+            Log in
           </Link>
         </p>
       </Form>
@@ -75,18 +115,26 @@ const Registration = ({ history, errors, touched, values, status }) => {
 }
 
 const FormikRegister = withFormik({
-  mapPropsToValues({ username, password, email }) {
+  mapPropsToValues({ username, password, email, title, tagline, age, timeAsGuide}) {
     return {
       username: username || '',
       password: password || '',
-      email: email || ''
+      email: email || '',
+      title: title || '',
+      tagline: tagline || '',
+      age: age || '',
+      timeAsGuide: timeAsGuide || ''
     }
   },
 
   validationSchema: Yup.object().shape({
     username: Yup.string().required('Username is required!'),
     password: Yup.string().required('Password is required!'),
-    email: Yup.string().required('Email is required')
+    email: Yup.string().required('Email is required'),
+    title: Yup.string().required('Please enter email'),
+    tagline: Yup.string().required('Please enter password'),
+    age: Yup.number().integer().required('Please accept Terms of Service'),
+    timeAsGuide: Yup.string().required('Please enter password'),
   }),
 
   handleSubmit(values, {props, setStatus}) {
@@ -95,9 +143,11 @@ const FormikRegister = withFormik({
       .then(res => {
         console.log('register', res.data)
         setStatus(res.data)
+        localStorage.setItem('token', res.data.token)
         props.history.push('/profile')
       })
       .catch(err => console.log(err.response))
+     
   }
 })(Registration)
 
