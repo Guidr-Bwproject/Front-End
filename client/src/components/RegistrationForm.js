@@ -82,12 +82,11 @@ const FormikRegister = withFormik({
     axios 
       .post('https://guidr-app.herokuapp.com/api/auth/register', values)  // ENTER REGISTRATION ENDPOINT
       .then(res => {
-          console.log('register', res.data)
+        console.log('register', res.data)
         setStatus(res.data)
-        props.history.push(`/`);
       })
       .catch(err => console.log(err.response))
-      
+      props.history.push('/profile')
   }
 })(Registration)
 
