@@ -4,6 +4,7 @@ import HomePageCards from "./HomePageCards";
 import styled from "styled-components";
 import {Card, Image} from "semantic-ui-react";
 import JennHiking from "../imgs/JennHiking2.jpg";
+import arrowIMG from '../imgs/arrow-alt-circle-down-regular.svg'
 
 
 
@@ -36,7 +37,7 @@ export default function HomePage() {
 
           </div>
         <div className="rightContent">
-          <h1>Feed</h1>
+          <h4 className='title'>Current Trips <img className='arrowIMG' src={arrowIMG} width='50' height='50' color='white' /> </h4>
         {trips.map(trip =>{
           return <HomePageCards key={trip.id} {...trip} />;
         })}
