@@ -11,10 +11,14 @@ export default function HomePage() {
 
   useEffect(() =>{
     axios
-      .get('https://rickandmortyapi.com/api/character/')
+      .get('https://guidr-app.herokuapp.com/api/trips')
       .then(response =>{
-        setTrips(response.data.results)
+        setTrips(response.trips.results)
+        console.log(trips);
       })
+      .catch(error =>{
+        console.log(error);
+      });
   },[]);
 
   return(
@@ -27,10 +31,11 @@ export default function HomePage() {
 
           </div>
         <div className="rightContent">
-          <h1>Feed</h1>
-          {trips.map(trip =>{
+          <h1>Trip Feed</h1>
+          {/* {trips.map(trip =>{
             return <HomePageCards key={trip.id} {...trip} />;
-          })}
+          })} */}
+          <HomePageCards />
         </div>
         </div>
       </StyledHomePage>
@@ -42,6 +47,14 @@ const StyledHomePage = styled.div `
 .homeView{
   display: flex;
   justify-content: space-evenly;
+
+  @media screen and (max-width: 500px){
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 800px){
+    flex-direction: column;
+  }
 }
 
 .leftContent{
@@ -50,6 +63,17 @@ const StyledHomePage = styled.div `
   flex-direction: column;
   align-items: center;
   margin-top: 5%;
+
+  @media screen and (max-width: 500px){
+    width: 100%;
+  }
+
+  @media screen and (max-width: 800px){
+
+    width: 90%;
+    margin: auto;
+    margin-top: 5%;
+  }
 
   p{
     width: 50%;
@@ -60,15 +84,32 @@ const StyledHomePage = styled.div `
     padding: 5%;
     text-align: left;
     box-shadow: 0px 5px 5px;
+
+    @media screen and (max-width: 500px){
+      display: none;
+    }
+
+    @media screen and (max-width: 800px){
+      display: none;
+    }
   }
 }
 
 .rightContent{
   width: 55%;
   margin: auto;
+  margin-right: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media screen and (max-width: 500px){
+    width: 90%;
+  }
+
+  @media screen and (max-width: 800px){
+    width: 90%;
+  }
 
   h1{
     font-size: 3rem;
