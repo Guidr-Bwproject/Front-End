@@ -30,10 +30,10 @@ export default function HomePage() {
           </div>
           <div className="rightContent">
             <h1>Trip Feed</h1>
-          {trips.map(trip =>{
+          {/* {trips.map(trip =>{
             return <HomePageCards key={trip.id} {...trip} />;
-          })}
-            {/* <HomePageCards /> */}
+          })} */}
+            <HomePageCards />
           </div>
         </div>
       </StyledHomePage>
