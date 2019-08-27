@@ -130,7 +130,25 @@ input {
   color: #496e1b;
 }
 
+<<<<<<< HEAD
 /* PROFILE */
+=======
+.title {
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  font-size: 90px;
+  
+}
+
+
+.arrowIMG {
+  color: white;
+ 
+  
+} 
+
+
+>>>>>>> 385f6a6586f2c9cc766a63a7d993bbe8fb49dc88
 
 .profileForm {
   display: flex;

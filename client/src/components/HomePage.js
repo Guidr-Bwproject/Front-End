@@ -2,7 +2,13 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import HomePageCards from "./HomePageCards";
 import styled from "styled-components";
+
+import {Card, Image} from "semantic-ui-react";
+import JennHiking from "../imgs/JennHiking2.jpg";
+import arrowIMG from '../imgs/arrow-alt-circle-down-regular.svg'
+
 import HomePageProfileCard from "./HomePageProfileCard";
+
 
 
 
@@ -27,16 +33,23 @@ export default function HomePage() {
         <div className="homeView">
           <div className="leftContent">
             <HomePageProfileCard />
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus cum voluptates consequuntur nam placeat earum cupiditate recusandae minima perferendis cumque modi beatae, fugit adipisci? Officia tenetur inventore iste asperiores eos?</p>
-
           </div>
-        <div className="rightContent">
-          <h1>Trip Feed</h1>
+          <div className="rightContent">
+            <h1>Trip Feed</h1>
           {/* {trips.map(trip =>{
             return <HomePageCards key={trip.id} {...trip} />;
           })} */}
-          <HomePageCards />
+            <HomePageCards />
+          </div>
+
+        <div className="rightContent">
+          <h4 className='title'>Current Trips <img className='arrowIMG' src={arrowIMG} width='50' height='50' color='white' /> </h4>
+        {trips.map(trip =>{
+          return <HomePageCards key={trip.id} {...trip} />;
+        })}
         </div>
+
+
         </div>
       </StyledHomePage>
     </section>
@@ -59,39 +72,21 @@ const StyledHomePage = styled.div `
 
 .leftContent{
   width: 40%;
+  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 5%;
+  position: fixed;
+  right: 60%;
+  top: 35%;
 
   @media screen and (max-width: 500px){
-    width: 100%;
+  display: none;
   }
 
   @media screen and (max-width: 800px){
-
-    width: 90%;
-    margin: auto;
-    margin-top: 5%;
-  }
-
-  p{
-    width: 50%;
-    background-color: #f7f7f7;
-    opacity: .8;
-    border: 1px solid lightgrey;
-    border-radius: 10px;
-    padding: 5%;
-    text-align: left;
-    box-shadow: 0px 5px 5px;
-
-    @media screen and (max-width: 500px){
-      display: none;
-    }
-
-    @media screen and (max-width: 800px){
-      display: none;
-    }
+    display: none;
   }
 }
 

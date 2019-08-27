@@ -6,7 +6,7 @@ import { Form, Field, withFormik} from 'formik';
 import {Link} from 'react-router-dom'
 
 
-const Registration = ({ errors, touched, values, status }) => {
+const Registration = ({ history, errors, touched, values, status }) => {
   
   const [user, setUser] = useState([])
   useEffect(() => {
@@ -50,6 +50,17 @@ const Registration = ({ errors, touched, values, status }) => {
         />
         {touched.password && errors.password && (
           <p className="error">{errors.password}</p>
+        )}
+
+<Field 
+          className="input"
+          type="password"
+          name="confirmPassword"
+          placeholder="Confirm Password"
+          
+        />
+        {touched.confirmPassword && errors.confirmPassword && (
+          <p className="error">{errors.confirmPassword}</p>
         )}
 
         <button className='loginButton'>Register</button>
