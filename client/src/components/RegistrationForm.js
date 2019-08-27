@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { Form, Field, withFormik } from 'formik';
+import { Form, Field, withFormik} from 'formik';
+import {Link} from 'react-router-dom'
 
 
 const Registration = ({ errors, touched, values, status }) => {
@@ -15,8 +16,8 @@ const Registration = ({ errors, touched, values, status }) => {
   }, [status])
 
   return (
-    <div className="loginForm">
-      <h1>Register</h1>
+    <div className="loginPage">
+      <h1 className='loginTitle'>Register</h1>
       <Form>
         <Field 
           className="input"
@@ -51,7 +52,12 @@ const Registration = ({ errors, touched, values, status }) => {
           <p className="error">{errors.password}</p>
         )}
 
-        <button>Register</button>
+        <button className='loginButton'>Register</button>
+        <p className="accountText">Already have an account?{' '}
+          <Link to='/login' className="accountLink">
+             Log in
+          </Link>
+        </p>
       </Form>
     </div>
   )
