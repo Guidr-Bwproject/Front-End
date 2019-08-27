@@ -2,7 +2,13 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import HomePageCards from "./HomePageCards";
 import styled from "styled-components";
+
+import {Card, Image} from "semantic-ui-react";
+import JennHiking from "../imgs/JennHiking2.jpg";
+import arrowIMG from '../imgs/arrow-alt-circle-down-regular.svg'
+
 import HomePageProfileCard from "./HomePageProfileCard";
+
 
 
 
@@ -35,6 +41,15 @@ export default function HomePage() {
           })} */}
             <HomePageCards />
           </div>
+
+        <div className="rightContent">
+          <h4 className='title'>Current Trips <img className='arrowIMG' src={arrowIMG} width='50' height='50' color='white' /> </h4>
+        {trips.map(trip =>{
+          return <HomePageCards key={trip.id} {...trip} />;
+        })}
+        </div>
+
+
         </div>
       </StyledHomePage>
     </section>
