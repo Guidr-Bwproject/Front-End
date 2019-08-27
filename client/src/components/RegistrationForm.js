@@ -55,7 +55,7 @@ const Registration = ({ errors, touched, values, status }) => {
         <button className='loginButton'>Register</button>
         <p className="accountText">Already have an account?{' '}
           <Link to='/login' className="accountLink">
-             Register
+             Log in
           </Link>
         </p>
       </Form>
