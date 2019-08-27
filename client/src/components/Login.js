@@ -4,12 +4,16 @@ import axios from 'axios';
 import { Form, Field, withFormik } from 'formik';
 import {Link} from 'react-router-dom'
 
-const Login = ({ errors, touched, values, status }) => {
+const Login = ({ history, errors, touched, values, status }) => {
   
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState({
+        username: '',
+        password: ''
+    })
+
   useEffect(() => {
     if (status) {
-      setUser(user => status) // ({...user, status})
+      setUser(user => status)
     }
   }, [status])
 
@@ -41,7 +45,7 @@ const Login = ({ errors, touched, values, status }) => {
         )}
         <br></br>
 
-        <button className='loginButton'>Login</button>
+        <button type="submit" className='loginButton'>Login</button>
         <p className="accountText">Don't have an account?{' '}
         <Link to='/signup' className="accountLink">
              Sign up
@@ -55,21 +59,23 @@ const Login = ({ errors, touched, values, status }) => {
 const FormikLogin = withFormik({
   mapPropsToValues({ username, password }) {
     return {
-      username: username || '',
-      password: password || '',
+        username: username || '',
+        password: password || ''
     }
   },
 
   validationSchema: Yup.object().shape({
-    username: Yup.string().required('Username is required!'),
-    password: Yup.string().required('Password is required!')
+      username: Yup.string().required('Username is required!'),
+      password: Yup.string().required('Password is required!')
   }),
 
-  handleSubmit(values, {setStatus}) {
+  handleSubmit(user, {props, setStatus}) {
     axios 
-      .post('', values) // ENTER LOGIN ENDPOINT
+      .post('https://guidr-app.herokuapp.com/api/auth/login', user) // ENTER LOGIN ENDPOINT
       .then(res => {
         setStatus(res.data)
+        localStorage.setItem('token', res.data.token)
+        props.history.push('/profile')
       })
       .catch(err => console.log(err.response))
   }
