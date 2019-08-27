@@ -27,7 +27,6 @@ export default function HomePage() {
         <div className="homeView">
           <div className="leftContent">
             <HomePageProfileCard />
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus cum voluptates consequuntur nam placeat earum cupiditate recusandae minima perferendis cumque modi beatae, fugit adipisci? Officia tenetur inventore iste asperiores eos?</p>
           </div>
           <div className="rightContent">
             <h1>Trip Feed</h1>
@@ -65,34 +64,14 @@ const StyledHomePage = styled.div `
   margin-top: 5%;
   position: fixed;
   right: 60%;
+  top: 35%;
 
   @media screen and (max-width: 500px){
-    width: 100%;
+  display: none;
   }
 
   @media screen and (max-width: 800px){
-
-    width: 90%;
-    margin: auto;
-    margin-top: 5%;
-  }
-
-  p{
-    width: 50%;
-    background-color: #f7f7f7;
-    opacity: .8;
-    border-radius: 10px;
-    padding: 5%;
-    text-align: left;
-    box-shadow: 0px 5px 5px;
-
-    @media screen and (max-width: 500px){
-      display: none;
-    }
-
-    @media screen and (max-width: 800px){
-      display: none;
-    }
+    display: none;
   }
 }
 

@@ -52,6 +52,17 @@ const Registration = ({ history, errors, touched, values, status }) => {
           <p className="error">{errors.password}</p>
         )}
 
+<Field 
+          className="input"
+          type="password"
+          name="confirmPassword"
+          placeholder="Confirm Password"
+          
+        />
+        {touched.confirmPassword && errors.confirmPassword && (
+          <p className="error">{errors.confirmPassword}</p>
+        )}
+
         <button className='loginButton'>Register</button>
         <p className="accountText">Already have an account?{'Log in'}
           <Link to='/login' className="accountLink">
