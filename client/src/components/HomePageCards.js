@@ -1,6 +1,6 @@
 import React from "react";
 import {Card, Icon, Image} from "semantic-ui-react";
-import Mountain from "../images/Mountain.jpg";
+import Mountain from "../imgs/Mountain.jpg";
 
 
 export default function HomePageCards ({name,species}){
