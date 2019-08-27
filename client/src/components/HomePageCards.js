@@ -33,7 +33,7 @@ const StyledHomeCards = styled.div `
 .CardContainer{
   width: 100%;
   background-color: #f7f7f7;
-  margin: 5%;
+  margin: auto;
   border-radius: 10px;
   box-shadow: 0px 5px 5px;
   opacity: .9;
