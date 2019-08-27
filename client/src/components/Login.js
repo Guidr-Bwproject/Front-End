@@ -14,7 +14,7 @@ const Login = ({ errors, touched, values, status }) => {
 
   return (
     <div className="loginPage">
-      <h1>Adventure Awaits</h1>
+      <span className="loginTitle">Adventure Awaits</span>
       <Form>
         <Field 
           className="input"
@@ -41,7 +41,11 @@ const Login = ({ errors, touched, values, status }) => {
         <br></br>
 
         <button className='loginButton'>Login</button>
-        <p>Don't have an account? <span className="accountLink">Sign Up</span></p>
+        <p className="accountText">Don't have an account?{' '}
+          <span className="accountLink">
+             Sign Up
+          </span>
+        </p>
       </Form>
     </div>
   )
