@@ -34,12 +34,14 @@
   }
 }
 
+
+
 body {
   background-image: url('./imgs/wynand-van-poortvliet-KQwl5RnZAqg-unsplash.jpg');
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  
+  height: 100%;
 
 }
 
@@ -112,3 +114,13 @@ input {
    cursor: pointer;
    background-color: #496e1b;
  }
+
+ .accountLink {
+   color: #314b11;
+   font-weight: bold;
+ }
+
+ .accountLink:hover {
+  cursor: pointer;
+  color: #496e1b;
+}

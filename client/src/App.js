@@ -1,8 +1,14 @@
 import React from 'react';
 import './App.css';
+import HomePage from "./components/HomePage";
 import GuidrImg from './imgs/Guidr Logo.svg'
 
+// import Login from './components/Login'
 import Login from './components/Login'
+import Profile from './components/Profile'
+import FormikRegister from './components/RegistrationForm';
+
+import { Route, Link } from 'react-router-dom'
 
 function App() {
   return (
@@ -14,14 +20,19 @@ function App() {
         </div>
         
         <div className='links'>
-          <a href='#'>Home</a>
-          <a href='#'>About</a>
-          <a href='#'>Login</a>
-          <a href='#'>Sign Up</a>
+          <Link to='/'>Home</Link>
+          <Link to='/'>About</Link>
+          <Link to='/login'>Login</Link>
+          <Link to='/signup'>Sign Up</Link>
         </div>
        
       </div>
-      <Login />
+   
+      <Route exact path='/' exact component={HomePage} />
+      <Route exact path='/profile' exact component={Profile} />
+      <Route exact path='/login' exact component={Login} />
+      <Route exact path='/signup' exact component={FormikRegister} />
+
     </div>
   );
 }
