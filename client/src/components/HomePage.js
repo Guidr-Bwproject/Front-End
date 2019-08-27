@@ -73,7 +73,7 @@ const StyledHomePage = styled.div `
 }
 
 .rightContent{
-  width: 50%;
+  width: 55%;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -82,6 +82,7 @@ const StyledHomePage = styled.div `
   h1{
     font-size: 3rem;
     color: #314b11;
+    align-self: flex-start;
   }
 }
 `;
