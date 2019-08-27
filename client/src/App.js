@@ -3,7 +3,6 @@ import './App.css';
 import HomePage from "./components/HomePage";
 import GuidrImg from './imgs/Guidr Logo.svg'
 
-// import Login from './components/Login'
 import Login from './components/Login'
 import Profile from './components/Profile'
 import FormikRegister from './components/RegistrationForm';
