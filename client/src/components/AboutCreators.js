@@ -18,7 +18,7 @@ export default function AboutCreatorCard ({}){
       <Image src={PandaMailbox} fluid className="creatorPic"/>
       <Card.Content>
         <Card.Header className="cardHeader">
-          Yusef Nafey
+          Yusuf Nafey
         </Card.Header>
         <Card.Meta className="cardMeta">Back End Developer</Card.Meta>
       </Card.Content>
