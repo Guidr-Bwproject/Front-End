@@ -10,6 +10,7 @@ const Login = ({ history, errors, touched, values, status }) => {
         username: '',
         password: ''
     })
+    console.log('Login User', user)
 
   useEffect(() => {
     if (status) {

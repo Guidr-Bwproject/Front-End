@@ -135,6 +135,7 @@ input {
   color: #496e1b;
 }
 
+/* PROFILE */
 .title {
   color: white;
   text-shadow: 1px 1px 1px black;
@@ -151,3 +152,26 @@ input {
 
 
 
+.profileForm {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.addTrip {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.submitButton {
+  margin-top: 25px;
+  font-size: 20px;
+  height: 40px;
+  border-radius: 8px;
+  width: 40%;
+}
