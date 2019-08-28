@@ -3,8 +3,8 @@ import './App.css';
 import HomePage from "./components/HomePage";
 import GuidrImg from './imgs/Guidr Logo.svg'
 
-import Login from './components/Login'
-import FormikProfileForm from './components/Profile'
+import FormikLogin from './components/Login'
+import FormikTripForm from './components/TripForm'
 import FormikRegister from './components/RegistrationForm';
 
 import { Route, Link } from 'react-router-dom'
@@ -28,8 +28,9 @@ function App() {
       </div>
    
       <Route exact path='/' component={HomePage} />
-      <Route exact path='/profile' component={FormikProfileForm} />
-      <Route exact path='/login' component={Login} />
+      {/* <Route exact path='/profile' component={Profile} /> */}
+      <Route exact path='/addtrip' component={FormikTripForm} />
+      <Route exact path='/login' component={FormikLogin} />
       <Route exact path='/signup' component={FormikRegister} />
 
     </div>
