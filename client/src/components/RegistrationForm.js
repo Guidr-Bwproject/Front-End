@@ -18,7 +18,7 @@ const Registration = ({ history, errors, touched, values, status }) => {
   return (
     <div className="signupPage">
       <h1 className='loginTitle'>Register</h1>
-     <div class="contain">
+     <div className="contain">
       <Form>
       <div className="1">
         <Field 
@@ -54,16 +54,7 @@ const Registration = ({ history, errors, touched, values, status }) => {
           <p className="error">{errors.password}</p>
         )}
 
-        <Field 
-          className="input"
-          type="password"
-          name="confirmPassword"
-          placeholder="Confirm Password"
-          
-        />
-        {touched.confirmPassword && errors.confirmPassword && (
-          <p className="error">{errors.confirmPassword}</p>
-        )}
+       
        </div>
        <div className="2">     
         <Field 
@@ -74,7 +65,7 @@ const Registration = ({ history, errors, touched, values, status }) => {
 
         />
         {touched.title && errors.title && (
-            <p classname="error">{errors.title}</p>
+            <p className="error">{errors.title}</p>
         )}
 
         <Field 
@@ -85,7 +76,7 @@ const Registration = ({ history, errors, touched, values, status }) => {
 
         />
         {touched.tagline && errors.tagline && (
-            <p classname="error">{errors.tagline}</p>
+            <p className="error">{errors.tagline}</p>
          )}
                 
         <Field 
@@ -96,22 +87,22 @@ const Registration = ({ history, errors, touched, values, status }) => {
 
         />
         {touched.age && errors.age && (
-            <p classname="error">{errors.age}</p>
+            <p className="error">{errors.age}</p>
         )}
                 
         <Field 
         className="input"
-        type="time" 
-        name="time" 
+        type="text" 
+        name="time_as_guide" 
         placeholder="Enter How Long You Have Been A Guide"
 
         />
-        {touched.time && errors.time && (
-             <p classname="error">{errors.time}</p>
+        {touched.time_as_guide && errors.time_as_guide && (
+             <p className="error">{errors.time_as_guide}</p>
         )}
        </div> 
 
-        <button className='registerButton'>Register</button>
+        <button  type='submit' className='registerButton'>Register</button>
         <p className="accountText">Already have an account?{' '}
           <Link to='/login' className="accountLink">
             Log in
@@ -124,7 +115,7 @@ const Registration = ({ history, errors, touched, values, status }) => {
 }
 
 const FormikRegister = withFormik({
-  mapPropsToValues({ username, password, email, title, tagline, age, timeAsGuide}) {
+  mapPropsToValues({ username, password, email, title, tagline, age, time_as_guide}) {
     return {
       username: username || '',
       password: password || '',
@@ -132,7 +123,7 @@ const FormikRegister = withFormik({
       title: title || '',
       tagline: tagline || '',
       age: age || '',
-      timeAsGuide: timeAsGuide || ''
+      time_as_guide: time_as_guide || ''
     }
   },
 
@@ -143,7 +134,7 @@ const FormikRegister = withFormik({
     title: Yup.string().required('Enter trip type here'),
     tagline: Yup.string().required('Trip description needed'),
     age: Yup.number().integer().required('Age needed'),
-    timeAsGuide: Yup.string().required('How long a guide'),
+    time_as_guide: Yup.string().required('How long a guide'),
   }),
 
   handleSubmit(values, {props, setStatus}) {
