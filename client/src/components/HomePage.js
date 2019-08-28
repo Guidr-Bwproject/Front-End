@@ -41,7 +41,7 @@ export default function HomePage() {
         </div>
         <div className="rightContent">
           <h4 className="rightTitle">Meet the Team</h4>
-          <AboutCreatorCard />
+            <AboutCreatorCard />
         </div>
         </div>
       </StyledHomePage>
@@ -85,15 +85,31 @@ const StyledHomePage = styled.div `
   width: 50%;
   margin: auto;
   margin-top: 0%;
+
+  @media screen and (max-width: 500px){
+    width: 90%;
+  }
+
+  @media screen and (max-width: 800px){
+    width: 80%;
+  }
 }
 
 .rightContent{
   width: 25%;
 
+  @media screen and (max-width: 800px){
+    width: 90%;
+    margin: auto;
+  }
+
+
   .rightTitle{
     color: white;
     text-shadow: 1px 1px 1px black;
     font-size: 2rem;
+  }
+    
   }
 }
 `;

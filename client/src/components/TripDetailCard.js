@@ -51,7 +51,6 @@ const StyledTripCards = styled.div `
 
 .cardImage{
 width: 100%;
-height: 500px;
 border-radius: 10px 10px 0px 0px;
 }
 
