@@ -16,7 +16,7 @@ const Registration = ({ history, errors, touched, values, status }) => {
   }, [status])
 
   return (
-    <div className="loginPage">
+    <div className="signupPage">
       <h1 className='loginTitle'>Register</h1>
      <div class="contain">
       <Form>
@@ -67,6 +67,7 @@ const Registration = ({ history, errors, touched, values, status }) => {
        </div>
        <div className="2">     
         <Field 
+        className="input"
         type="text" 
         name="title" 
         placeholder="Enter Title of Trip"
@@ -77,6 +78,7 @@ const Registration = ({ history, errors, touched, values, status }) => {
         )}
 
         <Field 
+        className="input"
         type="text" 
         name="tagline" 
         placeholder="Enter Short Description of Trip"
@@ -87,6 +89,7 @@ const Registration = ({ history, errors, touched, values, status }) => {
          )}
                 
         <Field 
+        className="input"
         type="age" 
         name="age" 
         placeholder="Enter Your Age"
@@ -97,6 +100,7 @@ const Registration = ({ history, errors, touched, values, status }) => {
         )}
                 
         <Field 
+        className="input"
         type="time" 
         name="time" 
         placeholder="Enter How Long You Have Been A Guide"
@@ -107,8 +111,8 @@ const Registration = ({ history, errors, touched, values, status }) => {
         )}
        </div> 
 
-        <button className='loginButton'>Register</button>
-        <p className="accountText">Already have an account?{'Log in'}
+        <button className='registerButton'>Register</button>
+        <p className="accountText">Already have an account?{' '}
           <Link to='/login' className="accountLink">
             Log in
           </Link>
