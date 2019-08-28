@@ -35,9 +35,9 @@ export default function HomePage() {
           </div>
         <div className="middleContent">
           <h4 className='title'>Current Trips <img className='arrowIMG' src={arrowIMG} width='50' height='50' color='white' /> </h4>
-        {/* {trips.map(trip =>{
+        {trips.map(trip =>{
           return <HomePageCards key={trip.id} {...trip} />;
-        })} */}
+        })}
         <HomePageCards />
         </div>
         <div className="rightContent">
