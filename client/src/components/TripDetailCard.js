@@ -46,7 +46,6 @@ const StyledTripCards = styled.div `
   width: 75%;
   background-color: #f7f7f7;
   margin: auto;
-  margin-bottom: 5%;
   border-radius: 10px;
   box-shadow: 0px 5px 5px;
   box-sizing: border-box;

@@ -17,8 +17,8 @@ export default function HomePage() {
     axios
       .get('https://guidr-app.herokuapp.com/api/trips')
       .then(response =>{
-        setTrips(response.trips.results)
-        console.log(trips);
+        setTrips(response.data)
+        console.log(response);
       })
       .catch(error =>{
         console.log(error);
@@ -38,7 +38,6 @@ export default function HomePage() {
         {trips.map(trip =>{
           return <HomePageCards key={trip.id} {...trip} />;
         })}
-        <HomePageCards />
         </div>
         <div className="rightContent">
           <h4 className="rightTitle">Meet the Team</h4>

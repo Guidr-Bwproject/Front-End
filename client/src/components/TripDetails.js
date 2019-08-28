@@ -13,8 +13,8 @@ export default function TripDetails() {
     axios
       .get('https://guidr-app.herokuapp.com/api/trips/:id')
       .then(response =>{
-        setDetails(response.details.results)
-        console.log(details);
+        setDetails(response.data)
+        console.log(response);
       })
       .catch(error =>{
         console.log(error);
