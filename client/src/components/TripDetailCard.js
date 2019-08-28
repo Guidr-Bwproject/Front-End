@@ -1,36 +1,34 @@
 import React from "react";
 import {Card, Image, Button} from "semantic-ui-react";
-import Mountain from "../imgs/Mountain.jpg";
-import {Route, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 import styled from "styled-components";
 import arrowIMG from '../imgs/arrow-alt-circle-down-regular.svg';
 
 
-export default function TripDetailCard ({username, title, date, description, duration, location}){
+export default function TripDetailCard ({username, title, date, description, duration, location,image}){
   return(
     <StyledTripCards>
     <div className="tripCard">
     <Card className="CardContainer">
-      <Image src={Mountain} fluid className="cardImage"/>
+      <Image src={image} alt="a beautiful landscape" fluid className="cardImage"/>
       <Card.Content className="cardContent">
-        <Card.Header className="cardHeader">Super fun sounding trip {title}</Card.Header>
+        <Card.Header className="cardHeader">{title}</Card.Header>
         <div className="cardMiddle">
           <Card.Meta className="guideName">
             Guide Name{username}
           </Card.Meta>
           <Card.Meta className="duration">
-           Start Date: 9/2/2019{date} | Duration: {duration}3 Months
+           Start Date: {date} | Duration: {duration}
           </Card.Meta>
           <Card.Description className="location">
-            Join us in {location}Utah!
+            Join us in {location}
           </Card.Description>
           <Card.Description className="description">
-            Muskellunge trout combtail gourami sea raven sole porbeagle shark freshwater hatchetfish spinefoot limia ghoul. Barbeled dragonfish sturgeon beardfish, mud catfish rockfish blue danio. Dogfish sabertooth {description}
-            Muskellunge trout combtail gourami sea raven sole porbeagle shark freshwater hatchetfish spinefoot limia ghoul. Barbeled dragonfish sturgeon beardfish, mud catfish rockfish blue danio. Dogfish sabertooth  {description}
+            {description}
           </Card.Description>
         </div>
         <Card.Description className="cardBottom">
-          <h4 className="buttonTitle">Want to join us? <img className='arrowIMG' src={arrowIMG} width='25' height='25' color='white' /></h4>
+          <h4 className="buttonTitle">Want to join us? <img alt="" className='arrowIMG' src={arrowIMG} width='25' height='25' color='white' /></h4>
           <Link to="/profile" className="userLink"><Button className="guideContactButton">Contact Guide!</Button></Link>
           
         </Card.Description>

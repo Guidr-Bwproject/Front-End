@@ -1,7 +1,6 @@
 import React from "react";
 import {Card, Image} from "semantic-ui-react";
-import Mountain from "../imgs/Mountain.jpg";
-import {Route, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 import styled from "styled-components";
 
 
@@ -14,7 +13,7 @@ export default function HomePageCards ({username, title, date, description, imag
       <Card.Content style={{padding: "1% 5%"}}>
         <Card.Header className="cardHeader">{title}</Card.Header>
         <Card.Meta className="cardMeta">
-        <Link to="/${user-id}" className="cardGuideLink">Guide Name{username} | {date}</Link>
+        <Link to="#" className="cardGuideLink">Guide Name{username} | {date}</Link>
         </Card.Meta>
         <Card.Description style={{textAlign: "left", width: "80%", margin: "auto"}}>
          {description}
