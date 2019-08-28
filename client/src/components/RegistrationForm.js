@@ -87,7 +87,7 @@ const Registration = ({ history, errors, touched, values, status }) => {
          )}
                 
         <Field 
-        type="age" 
+        type="number" 
         name="age" 
         placeholder="Enter Your Age"
 
@@ -97,7 +97,7 @@ const Registration = ({ history, errors, touched, values, status }) => {
         )}
                 
         <Field 
-        type="time" 
+        type="text" 
         name="time" 
         placeholder="Enter How Long You Have Been A Guide"
 
@@ -107,7 +107,7 @@ const Registration = ({ history, errors, touched, values, status }) => {
         )}
        </div> 
 
-        <button className='loginButton'>Register</button>
+        <button type="submit" className='loginButton'>Register</button>
         <p className="accountText">Already have an account?{'Log in'}
           <Link to='/login' className="accountLink">
             Log in
