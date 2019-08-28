@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { Form, Field, withFormik} from 'formik';
-import {Link} from 'react-router-dom'
+import { Form, Field, withFormik } from 'formik';
+import { Link } from 'react-router-dom'
 
 
 const Registration = ({ history, errors, touched, values, status }) => {
@@ -11,14 +11,16 @@ const Registration = ({ history, errors, touched, values, status }) => {
   const [user, setUser] = useState([])
   useEffect(() => {
     if (status) {
-      setUser(user => status) // ({...user, status})
+      setUser(user => status) 
     }
   }, [status])
 
   return (
-    <div className="loginPage">
+    <div className="signupPage">
       <h1 className='loginTitle'>Register</h1>
+     <div class="contain">
       <Form>
+      <div className="1">
         <Field 
           className="input"
           type="text"
@@ -52,7 +54,7 @@ const Registration = ({ history, errors, touched, values, status }) => {
           <p className="error">{errors.password}</p>
         )}
 
-<Field 
+        <Field 
           className="input"
           type="password"
           name="confirmPassword"
@@ -62,31 +64,86 @@ const Registration = ({ history, errors, touched, values, status }) => {
         {touched.confirmPassword && errors.confirmPassword && (
           <p className="error">{errors.confirmPassword}</p>
         )}
+       </div>
+       <div className="2">     
+        <Field 
+        className="input"
+        type="text" 
+        name="title" 
+        placeholder="Enter Title of Trip"
 
-        <button className='loginButton'>Register</button>
+        />
+        {touched.title && errors.title && (
+            <p classname="error">{errors.title}</p>
+        )}
+
+        <Field 
+        className="input"
+        type="text" 
+        name="tagline" 
+        placeholder="Enter Short Description of Trip"
+
+        />
+        {touched.tagline && errors.tagline && (
+            <p classname="error">{errors.tagline}</p>
+         )}
+                
+        <Field 
+        className="input"
+        type="age" 
+        name="age" 
+        placeholder="Enter Your Age"
+
+        />
+        {touched.age && errors.age && (
+            <p classname="error">{errors.age}</p>
+        )}
+                
+        <Field 
+        className="input"
+        type="time" 
+        name="time" 
+        placeholder="Enter How Long You Have Been A Guide"
+
+        />
+        {touched.time && errors.time && (
+             <p classname="error">{errors.time}</p>
+        )}
+       </div> 
+
+        <button className='registerButton'>Register</button>
         <p className="accountText">Already have an account?{' '}
           <Link to='/login' className="accountLink">
-             Log in
+            Log in
           </Link>
         </p>
       </Form>
+     </div> 
     </div>
   )
 }
 
 const FormikRegister = withFormik({
-  mapPropsToValues({ username, password, email }) {
+  mapPropsToValues({ username, password, email, title, tagline, age, timeAsGuide}) {
     return {
       username: username || '',
       password: password || '',
-      email: email || ''
+      email: email || '',
+      title: title || '',
+      tagline: tagline || '',
+      age: age || '',
+      timeAsGuide: timeAsGuide || ''
     }
   },
 
   validationSchema: Yup.object().shape({
     username: Yup.string().required('Username is required!'),
     password: Yup.string().required('Password is required!'),
-    email: Yup.string().required('Email is required')
+    email: Yup.string().required('Email is required'),
+    title: Yup.string().required('Enter trip type here'),
+    tagline: Yup.string().required('Trip description needed'),
+    age: Yup.number().integer().required('Age needed'),
+    timeAsGuide: Yup.string().required('How long a guide'),
   }),
 
   handleSubmit(values, {props, setStatus}) {
@@ -95,6 +152,7 @@ const FormikRegister = withFormik({
       .then(res => {
         console.log('register', res.data)
         setStatus(res.data)
+        // localStorage.setItem(res.data.token)
         props.history.push('/profile')
       })
       .catch(err => console.log(err.response))

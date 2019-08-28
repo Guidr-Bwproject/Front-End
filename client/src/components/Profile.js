@@ -1,48 +1,68 @@
 // *** IMPORTS *** //
 
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
+import { axiosWithAuth } from '../utils/axiosWithAuth'
 
 // *** PROFILE FORM *** //
 
 const ProfileForm = ({ errors, touched, values, status }) => {
-    const [users, setUsers] = useState([]);
-    console.log(users);
+    const [trip, setTrip] = useState({
+      user_id: 1,
+      title: '',
+      description: '',
+      professional: false,
+      duration: '',
+      date: '',
+      location: '',
+      image: ''
+    });
+    console.log('trip', trip);
 
     useEffect(() => {
         if (status) {
-          setUsers([...users, status]);
+          setTrip(trip => status);
         }
       }, [status]);
 
     return (
-        <div className="ProfileForm">
+        <div className="profileForm">
             <h1>Your Profile!</h1>
-            <Form>
+            <Form className="addTrip">
                 <Field type="text" name="title" placeholder="Enter Title of Trip"/>
-                {touched.username && errors.username && (
-                    <p classname="error">{errors.username}</p>
+                {touched.title && errors.title && (
+                    <p classname="error">{errors.title}</p>
                 )}
 
-                <Field type="text" name="tagline" placeholder="Enter Short Description of Trip"/>
-                {touched.email && errors.email && (
-                    <p classname="error">{errors.email}</p>
-                )}
-                <Field type="age" name="age" placeholder="Enter Your Age"/>
-                {touched.password && errors.password && (
-                    <p classname="error">{errors.password}</p>
-                )}
-                <Field type="time" name="time" placeholder="Enter How Long You Have Been A Guide"/>
-                {touched.password && errors.password && (
-                    <p classname="error">{errors.password}</p>
+                <Field type="text" name="description" placeholder="Enter Short Description of Trip"/>
+                {touched.description && errors.description && (
+                    <p classname="error">{errors.description}</p>
                 )}
 
-                <button type="submit">Submit!</button>
+                {/* TOGGLE PROFESSIONAL */}
+
+                <Field type="text" name="date" placeholder="What date does the trip start?"/>
+                {touched.date && errors.date && (
+                    <p classname="error">{errors.date}</p>
+                )}
+                <Field type="text" name="duration" placeholder="How long is the trip?"/>
+                {touched.duration && errors.duration && (
+                    <p classname="error">{errors.duration}</p>
+                )}
+                <Field type="text" name="location" placeholder="Trip Location"/>
+                {touched.location && errors.location && (
+                    <p classname="error">{errors.location}</p>
+                )}
+                <Field type="text" name="image" placeholder="Image URL"/>
+                {touched.image && errors.image && (
+                    <p classname="error">{errors.image}</p>
+                )}
+
+                <button className="submitButton" type="submit">Submit!</button>
             </Form>
 
-        <div className="profile-container">
+        {/* <div className="profile-container">
             {users.map(user => {
                 return (
                     <ul key={user.id} className="user-card">
@@ -53,7 +73,7 @@ const ProfileForm = ({ errors, touched, values, status }) => {
                     </ul>
                 )
             })}
-        </div>
+        </div> */}
         </div>
     )
 }
@@ -61,19 +81,22 @@ const ProfileForm = ({ errors, touched, values, status }) => {
 // *** FORMIK - PROFILE FROM *** //
 
 const FormikProfileForm = withFormik({
-    mapPropsToValues({ username, title, tagline, age, timeAsGuide }) {
+    mapPropsToValues({ title, description, professional, duration, date, location, image }) {
         return {
-            username: username || '',
-            title: title || '',
-            tagline: tagline || '',
-            age: age || '',
-            timeAsGuide: timeAsGuide || ''
+          title: title || '',
+          description: description || '',
+          professional: professional || false,
+          duration: duration || '',
+          date: date || '',
+          location: location || '',
+          image: image || ''
         };
       },
 
 // *** YUP STUFF *** //
 
 validationSchema: Yup.object().shape({
+<<<<<<< HEAD
     username: Yup.string().required('Please enter username'),
 <<<<<<< HEAD
     title: Yup.string().required('Please enter title'),
@@ -86,13 +109,25 @@ validationSchema: Yup.object().shape({
     age: Yup.number().integer().required('Please accept Terms of Service'),
     timeAsGuide: Yup.string().required('Please enter password'),
 >>>>>>> f0c12c58a7967b45992ebf5e38d04343e1bb3abc
+=======
+    title: Yup.string().required('Please enter email'),
+    description: Yup.string().required('Please enter trip description'),
+    duration: Yup.string().required('Please enter trip duration'),
+    date: Yup.string().required('Please enter date start'),
+    location: Yup.string().required('Please enter trip location'),
+    image: Yup.string().required('Please enter trip image'),
+>>>>>>> ce20989d93205c8dfdfe39b4399b9971636359bf
   }),
 
-  handleSubmit(values, { setStatus }) {
-    axios
-      .post('', values) // ADD BACKEND TIE-IN WHEN AVAILABLE
+  handleSubmit(values, { setStatus, resetForm, setSubmitting }) {
+    const newValues = {...values, user_id: 1}
+    axiosWithAuth()
+      .post('https://guidr-app.herokuapp.com/api/trips', newValues) // ADD BACKEND TIE-IN WHEN AVAILABLE
       .then(res => {
+        console.log(res)
         setStatus(res.data);
+        resetForm();
+        setSubmitting();
       })
       .catch(err => console.log(err.response));
   }
