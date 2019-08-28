@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import styled from "styled-components";
 
 
-export default function HomePageCards ({username, title, date, description, image}){
+export default function HomePageCards ({username, title, date, description, image, id}){
   return(
     <StyledHomeCards>
     <div className="homeCard">
@@ -19,7 +19,7 @@ export default function HomePageCards ({username, title, date, description, imag
          {description}
         </Card.Description>
         <Card.Description className="cardLink">
-        <Link to="/TripDetails" className="homePageCardLink">Click here for trip details</Link>
+        <Link to={`/trips/${id}`} className="homePageCardLink">Click here for trip details</Link>
         </Card.Description>
       </Card.Content>
     </Card>

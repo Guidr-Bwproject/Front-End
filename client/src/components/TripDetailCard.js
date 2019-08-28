@@ -5,26 +5,26 @@ import styled from "styled-components";
 import arrowIMG from '../imgs/arrow-alt-circle-down-regular.svg';
 
 
-export default function TripDetailCard ({username, title, date, description, duration, location,image}){
+export default function TripDetailCard ({details}){
   return(
     <StyledTripCards>
     <div className="tripCard">
     <Card className="CardContainer">
-      <Image src={image} alt="a beautiful landscape" fluid className="cardImage"/>
+      <Image src={details.image} alt="a beautiful landscape" fluid className="cardImage"/>
       <Card.Content className="cardContent">
-        <Card.Header className="cardHeader">{title}</Card.Header>
+        <Card.Header className="cardHeader">{details.title}</Card.Header>
         <div className="cardMiddle">
           <Card.Meta className="guideName">
-            Guide Name{username}
+            Guide Name
           </Card.Meta>
           <Card.Meta className="duration">
-           Start Date: {date} | Duration: {duration}
+           Start Date: {details.date} | Duration: {details.duration}
           </Card.Meta>
           <Card.Description className="location">
-            Join us in {location}
+            Join us in {details.location}
           </Card.Description>
           <Card.Description className="description">
-            {description}
+            {details.description}
           </Card.Description>
         </div>
         <Card.Description className="cardBottom">

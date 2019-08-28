@@ -5,12 +5,14 @@ import TripDetailCard from "./TripDetailCard";
 
 
 
-export default function TripDetails() {
-  const [details, setDetails] = useState([]);
+export default function TripDetails(props) {
+  const [details, setDetails] = useState({});
 
   useEffect(() =>{
+    const id = props.match.params.id;
+    console.log(props);
     axios
-      .get('https://guidr-app.herokuapp.com/api/trips/id')
+      .get(`https://guidr-app.herokuapp.com/api/trips/${id}`)
       .then(response =>{
         setDetails(response.data)
         console.log(response);
@@ -22,10 +24,8 @@ export default function TripDetails() {
 
   return(
     <section className="tripDetailView">
-      {details.map(detail =>{
-        return <TripDetailCard key={detail.id} {...detail} />;
-      })}
-      <TripDetailCard />
+          <TripDetailCard details={details} />;
+          {console.log(details)};
     </section>
   );
 }

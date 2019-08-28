@@ -36,7 +36,7 @@ export default function HomePage() {
         <div className="middleContent">
           <h4 className='title'>Current Trips <img alt="" className='arrowIMG' src={arrowIMG} width='50' height='50' color='white' /> </h4>
         {trips.map(trip =>{
-          return <HomePageCards key={trip.id} {...trip} />;
+          return <HomePageCards key={trip.id} {...trip} trip={trip} id={trip.id}/>;
         })}
         </div>
         <div className="rightContent">
