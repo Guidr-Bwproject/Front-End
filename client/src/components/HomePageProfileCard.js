@@ -1,10 +1,10 @@
 import React from "react";
-import {Card, Icon, Image} from "semantic-ui-react";
+import {Card, Image} from "semantic-ui-react";
 import JennHiking from "../imgs/JennHiking2.jpg";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 
-export default function HomePageProfileCard ({}){
+export default function HomePageProfileCard (){
   return(
     <StyledProfileCard>
     <div className="profileCard">

@@ -32,7 +32,8 @@ function App() {
       <Route exact path='/profile' component={FormikProfileForm} />
       <Route exact path='/login' component={Login} />
       <Route exact path='/signup' component={FormikRegister} />
-      <Route exact path='/tripdetails' component={TripDetails} />
+      <Route path='/trips/:id' render={(props) => <TripDetails {...props} />} />
+
 
     </div>
   );

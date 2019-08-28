@@ -1,26 +1,25 @@
 import React from "react";
 import {Card, Image} from "semantic-ui-react";
-import Mountain from "../imgs/Mountain.jpg";
-import {Route, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 import styled from "styled-components";
 
 
-export default function HomePageCards ({username, title, date, description}){
+export default function HomePageCards ({username, title, date, description, image, id}){
   return(
     <StyledHomeCards>
     <div className="homeCard">
     <Card className="CardContainer">
-      <Image src={Mountain} fluid className="cardImage"/>
+      <Image src={image} fluid className="cardImage"/>
       <Card.Content style={{padding: "1% 5%"}}>
-        <Card.Header className="cardHeader">Super fun sounding trip {title}</Card.Header>
+        <Card.Header className="cardHeader">{title}</Card.Header>
         <Card.Meta className="cardMeta">
-        <Link to="/${user-id}" className="cardGuideLink">Guide Name{username} | Date{date}</Link>
+        <Link to="#" className="cardGuideLink">Guide Name{username} | {date}</Link>
         </Card.Meta>
         <Card.Description style={{textAlign: "left", width: "80%", margin: "auto"}}>
-        Muskellunge trout combtail gourami sea raven sole porbeagle shark freshwater hatchetfish spinefoot limia ghoul. Barbeled dragonfish sturgeon beardfish, mud catfish rockfish blue danio. Dogfish sabertooth {description}
+         {description}
         </Card.Description>
         <Card.Description className="cardLink">
-        <Link to="/TripDetails" className="homePageCardLink">Click here for trip details</Link>
+        <Link to={`/trips/${id}`} className="homePageCardLink">Click here for trip details</Link>
         </Card.Description>
       </Card.Content>
     </Card>

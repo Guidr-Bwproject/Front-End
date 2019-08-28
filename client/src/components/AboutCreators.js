@@ -1,5 +1,5 @@
 import React from "react";
-import {Card, Icon, Image} from "semantic-ui-react";
+import {Card, Image} from "semantic-ui-react";
 import JennProfile from "../imgs/JennProfile.jpg";
 import BryanProfile from "../imgs/BryanProfile.jpg"
 import MichaelProfile from "../imgs/MichaelProfile.jpg";
@@ -11,7 +11,7 @@ import HysenProfile from "../imgs/HysenProfile.JPG";
 import PandaMailbox from "../imgs/PandaMailbox.JPG";
 import styled from "styled-components";
 
-export default function AboutCreatorCard ({}){
+export default function AboutCreatorCard (){
   return(
     <StyledCreatorCard>
     <div className="creatorCard">
