@@ -5,7 +5,7 @@ import {Route, Link} from "react-router-dom";
 import styled from "styled-components";
 
 
-export default function HomePageCards ({username, title, date, tagline}){
+export default function HomePageCards ({username, title, date, description}){
   return(
     <StyledHomeCards>
     <div className="homeCard">
@@ -17,7 +17,7 @@ export default function HomePageCards ({username, title, date, tagline}){
         <Link to="/${user-id}" className="cardGuideLink">Guide Name{username} | Date{date}</Link>
         </Card.Meta>
         <Card.Description style={{textAlign: "left", width: "80%", margin: "auto"}}>
-        Muskellunge trout combtail gourami sea raven sole porbeagle shark freshwater hatchetfish spinefoot limia ghoul. Barbeled dragonfish sturgeon beardfish, mud catfish rockfish blue danio. Dogfish sabertooth {tagline}
+        Muskellunge trout combtail gourami sea raven sole porbeagle shark freshwater hatchetfish spinefoot limia ghoul. Barbeled dragonfish sturgeon beardfish, mud catfish rockfish blue danio. Dogfish sabertooth {description}
         </Card.Description>
         <Card.Description className="cardLink">
         <Link to="/TripDetails" className="homePageCardLink">Click here for trip details</Link>
