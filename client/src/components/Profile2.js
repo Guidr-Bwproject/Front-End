@@ -13,9 +13,9 @@ export default function Profile2() {
 
   useEffect(() =>{
     axios
-      .get('https://guidr-app.herokuapp.com/api/user/trips') // NOT SURE HOW TO LIST TRIPS OF SINGLE USER??
+      .get('https://guidr-app.herokuapp.com/api/trips') // NOT SURE HOW TO LIST TRIPS OF SINGLE USER??
       .then(response =>{
-        setTrips(response.trips.results)
+        setTrips(response.data)
         console.log(trips);
       })
       .catch(error =>{
@@ -31,7 +31,7 @@ export default function Profile2() {
                 <h4 className='title'>About Me <img className='arrowIMG' src={arrowIMG} width='50' height='50' color='white' /> </h4>
                     <HomePageProfileCard />
                         <div className="buttons">
-                            <Button href="/???">Read Stories</Button>
+                            <Button href="      ">Read Stories</Button>
                             <Button href="/Profile">Log A Trip</Button>
                         </div>
                         {trips.map(trip =>{
@@ -44,6 +44,7 @@ export default function Profile2() {
     </section>
   );
 }
+
 
 const StyledProfilePage = styled.div `
 .ProfileView{
