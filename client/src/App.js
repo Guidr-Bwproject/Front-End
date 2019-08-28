@@ -22,6 +22,7 @@ function App() {
         <div className='links'>
           <Link to='/'>Home</Link>
           <Link to='/profile'>Profile</Link>
+          <Link to='/profile2'>Your Profile</Link>
           <Link to='/login'>Login</Link>
           <Link to='/signup'>Sign Up</Link>
         </div>
