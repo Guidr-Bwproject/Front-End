@@ -96,12 +96,27 @@ const FormikProfileForm = withFormik({
 // *** YUP STUFF *** //
 
 validationSchema: Yup.object().shape({
+<<<<<<< HEAD
+    username: Yup.string().required('Please enter username'),
+<<<<<<< HEAD
+    title: Yup.string().required('Please enter title'),
+    tagline: Yup.string().required('Please enter tagline'),
+    age: Yup.integer().required('Please enter age'),
+    timeAsGuide: Yup.string().required('Please enter time as guide'),
+=======
+    title: Yup.string().required('Please enter email'),
+    tagline: Yup.string().required('Please enter password'),
+    age: Yup.number().integer().required('Please accept Terms of Service'),
+    timeAsGuide: Yup.string().required('Please enter password'),
+>>>>>>> f0c12c58a7967b45992ebf5e38d04343e1bb3abc
+=======
     title: Yup.string().required('Please enter email'),
     description: Yup.string().required('Please enter trip description'),
     duration: Yup.string().required('Please enter trip duration'),
     date: Yup.string().required('Please enter date start'),
     location: Yup.string().required('Please enter trip location'),
     image: Yup.string().required('Please enter trip image'),
+>>>>>>> ce20989d93205c8dfdfe39b4399b9971636359bf
   }),
 
   handleSubmit(values, { setStatus, resetForm, setSubmitting }) {
