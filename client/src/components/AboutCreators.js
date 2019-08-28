@@ -7,6 +7,7 @@ import MarquesProfile from "../imgs/MarquesProfile.jpg";
 import NicholasProfile from "../imgs/NicholasProfile.jpg";
 import MarkProfile from "../imgs/MarkProfile.png";
 import WaisProfile from "../imgs/WaisProfile.jpg";
+import HysenProfile from "../imgs/HysenProfile.JPG";
 import PandaMailbox from "../imgs/PandaMailbox.JPG";
 import styled from "styled-components";
 
@@ -99,7 +100,7 @@ export default function AboutCreatorCard ({}){
 
     <div className="creatorCard">
     <Card className="creatorCardContainer">
-      <Image src={PandaMailbox} fluid className="creatorPic"/>
+      <Image src={HysenProfile} fluid className="creatorPic"/>
       <Card.Content>
         <Card.Header className="cardHeader">
           Hysen Sisco
