@@ -2,12 +2,10 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import HomePageCards from "./HomePageCards";
 import styled from "styled-components";
-
-import {Card, Image} from "semantic-ui-react";
-import JennHiking from "../imgs/JennHiking2.jpg";
 import arrowIMG from '../imgs/arrow-alt-circle-down-regular.svg'
 
 import HomePageProfileCard from "./HomePageProfileCard";
+import AboutCreatorCard from "./AboutCreators"
 
 
 
@@ -34,15 +32,16 @@ export default function HomePage() {
           <div className="leftContent">
             <HomePageProfileCard />
           </div>
-        <div className="rightContent">
+        <div className="middleContent">
           <h4 className='title'>Current Trips <img className='arrowIMG' src={arrowIMG} width='50' height='50' color='white' /> </h4>
         {/* {trips.map(trip =>{
           return <HomePageCards key={trip.id} {...trip} />;
         })} */}
         <HomePageCards />
         </div>
-
-
+        <div className="rightContent">
+          <AboutCreatorCard />
+        </div>
         </div>
       </StyledHomePage>
     </section>
@@ -64,15 +63,12 @@ const StyledHomePage = styled.div `
 }
 
 .leftContent{
-  width: 40%;
+  width: 25%;
   margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 5%;
-  position: fixed;
-  right: 60%;
-  top: 35%;
 
   @media screen and (max-width: 500px){
   display: none;
@@ -83,26 +79,13 @@ const StyledHomePage = styled.div `
   }
 }
 
-.rightContent{
-  width: 55%;
+.middleContent{
+  width: 50%;
   margin: auto;
-  margin-right: 5%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-top: 0%;
+}
 
-  @media screen and (max-width: 500px){
-    width: 90%;
-  }
-
-  @media screen and (max-width: 800px){
-    width: 90%;
-  }
-
-  h1{
-    font-size: 3rem;
-    color: #314b11;
-    align-self: flex-start;
-  }
+.rightContent{
+  width: 25%;
 }
 `;
