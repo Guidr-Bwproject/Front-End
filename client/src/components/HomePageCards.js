@@ -20,7 +20,7 @@ export default function HomePageCards ({username, title, date, tagline}){
         Muskellunge trout combtail gourami sea raven sole porbeagle shark freshwater hatchetfish spinefoot limia ghoul. Barbeled dragonfish sturgeon beardfish, mud catfish rockfish blue danio. Dogfish sabertooth {tagline}
         </Card.Description>
         <Card.Description className="cardLink">
-        <Link to="/${trip-id}" className="homePageCardLink">Click here for trip details</Link>
+        <Link to="/TripDetails" className="homePageCardLink">Click here for trip details</Link>
         </Card.Description>
       </Card.Content>
     </Card>
