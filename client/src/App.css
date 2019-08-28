@@ -37,6 +37,11 @@ body {
    font-size: 20px;
    text-decoration: none;
    color: rgb(109, 109, 109);
+   transition: .4s;
+ }
+
+ .navBar .links a:hover {
+   color: white;
  }
 
  /* .loginPage {
