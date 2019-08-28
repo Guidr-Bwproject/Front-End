@@ -8,33 +8,24 @@ import arrowIMG from '../imgs/arrow-alt-circle-down-regular.svg';
 export default function TripDetailCard ({details}){
   return(
     <StyledTripCards>
-    <div className="tripCard">
-    <Card className="CardContainer">
-      <Image src={details.image} alt="a beautiful landscape" fluid className="cardImage"/>
-      <Card.Content className="cardContent">
-        <Card.Header className="cardHeader">{details.title}</Card.Header>
-        <div className="cardMiddle">
-          <Card.Meta className="guideName">
-            Guide Name
-          </Card.Meta>
-          <Card.Meta className="duration">
-           Start Date: {details.date} | Duration: {details.duration}
-          </Card.Meta>
-          <Card.Description className="location">
-            Join us in {details.location}
-          </Card.Description>
-          <Card.Description className="description">
-            {details.description}
-          </Card.Description>
-        </div>
-        <Card.Description className="cardBottom">
-          <h4 className="buttonTitle">Want to join us? <img alt="" className='arrowIMG' src={arrowIMG} width='25' height='25' color='white' /></h4>
-          <Link to="/profile" className="userLink"><Button className="guideContactButton">Contact Guide!</Button></Link>
-          
-        </Card.Description>
-      </Card.Content>
-    </Card>
-    </div>
+      <div className="tripCard">
+        <Card className="CardContainer">
+          <Image src={details.image} alt="a beautiful landscape" fluid className="cardImage"/>
+          <Card.Content className="cardContent">
+            <Card.Header className="cardHeader">{details.title}</Card.Header>
+            <div className="cardMiddle">
+              <Card.Meta className="guideName">Guide Name</Card.Meta>
+              <Card.Meta className="duration">Start Date: {details.date} | Duration: {details.duration}</Card.Meta>
+              <Card.Description className="location">Join us in {details.location}</Card.Description>
+              <Card.Description className="description">{details.description}</Card.Description>
+            </div>
+            <Card.Description className="cardBottom">
+              <h4 className="buttonTitle">Want to join us? <img alt="" className='arrowIMG' src={arrowIMG} /></h4>
+              <Link to="/profile" className="userLink"><Button className="guideContactButton">Contact Guide!</Button></Link>  
+            </Card.Description>
+          </Card.Content>
+        </Card>
+      </div>
     </StyledTripCards>
   )
 }
@@ -89,6 +80,12 @@ padding: 1.5% 0;
   h4{
     color: white;
     font-size: 1.5rem;
+  }
+
+  .arrowIMG{
+    width: 25px;
+    height: 25px;
+    color: white;
   }
 
   .guideContactButton{

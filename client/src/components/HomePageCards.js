@@ -4,26 +4,24 @@ import {Link} from "react-router-dom";
 import styled from "styled-components";
 
 
-export default function HomePageCards ({username, title, date, description, image, id}){
+export default function HomePageCards ({title, date, description, image, id}){
   return(
     <StyledHomeCards>
-    <div className="homeCard">
-    <Card className="CardContainer">
-      <Image src={image} fluid className="cardImage"/>
-      <Card.Content style={{padding: "1% 5%"}}>
-        <Card.Header className="cardHeader">{title}</Card.Header>
-        <Card.Meta className="cardMeta">
-        <Link to="#" className="cardGuideLink">Guide Name{username} | {date}</Link>
-        </Card.Meta>
-        <Card.Description style={{textAlign: "left", width: "80%", margin: "auto"}}>
-         {description}
-        </Card.Description>
-        <Card.Description className="cardLink">
-        <Link to={`/trips/${id}`} className="homePageCardLink">Click here for trip details</Link>
-        </Card.Description>
-      </Card.Content>
-    </Card>
-    </div>
+      <div className="homeCard">
+        <Card className="CardContainer">
+          <Image src={image} fluid className="cardImage"/>
+          <Card.Content className="cardContent">
+            <Card.Header className="cardHeader">{title}</Card.Header>
+            <Card.Meta className="cardMeta">
+              <Link to="#" className="cardGuideLink">Guide Name | {date}</Link>
+            </Card.Meta>
+            <Card.Description className="description">{description}</Card.Description>
+            <Card.Description className="cardLink">
+              <Link to={`/trips/${id}`} className="homePageCardLink">Click here for trip details</Link>
+            </Card.Description>
+          </Card.Content>
+        </Card>
+      </div>
     </StyledHomeCards>
   )
 }
@@ -43,6 +41,10 @@ const StyledHomeCards = styled.div `
 width: 100%;
 height: 200px;
 border-radius: 10px 10px 0px 0px;
+}
+
+.cardContent{
+  padding: 1% 5%;
 }
 
 .cardHeader{
@@ -65,6 +67,12 @@ font-family: "Roboto";
 .cardGuideLink:hover{
   cursor: pointer;
   color: #496e1b;
+}
+
+.description{
+  text-align: left;
+  width: 80%;
+  margin: auto;
 }
 
 .cardLink{
