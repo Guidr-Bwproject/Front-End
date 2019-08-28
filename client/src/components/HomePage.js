@@ -30,6 +30,7 @@ export default function HomePage() {
       <StyledHomePage>
         <div className="homeView">
           <div className="leftContent">
+            <h4 className="leftTitle">Welcome!</h4>
             <HomePageProfileCard />
           </div>
         <div className="middleContent">
@@ -40,6 +41,7 @@ export default function HomePage() {
         <HomePageCards />
         </div>
         <div className="rightContent">
+          <h4 className="rightTitle">Meet the Team</h4>
           <AboutCreatorCard />
         </div>
         </div>
@@ -64,11 +66,12 @@ const StyledHomePage = styled.div `
 
 .leftContent{
   width: 25%;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 5%;
+
+  .leftTitle{
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    font-size: 2rem;
+  }
 
   @media screen and (max-width: 500px){
   display: none;
@@ -87,5 +90,11 @@ const StyledHomePage = styled.div `
 
 .rightContent{
   width: 25%;
+
+  .rightTitle{
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    font-size: 2rem;
+  }
 }
 `;

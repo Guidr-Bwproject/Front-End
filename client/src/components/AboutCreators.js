@@ -128,7 +128,7 @@ const StyledCreatorCard = styled.div `
 .creatorCardContainer{
 width: 80%;
 margin: auto;
-margin-top: 20%;
+margin-bottom: 5%;
 border-radius: 10px;
 background-color: #f7f7f7;
 box-shadow: 0px 5px 5px;
