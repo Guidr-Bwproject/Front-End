@@ -24,7 +24,7 @@ export default function HomePageProfileCard ({}){
 
 const StyledProfileCard = styled.div `
 .profileCardContainer{
-width: 60%;
+width: 80%;
 margin: auto;
 border-radius: 10px;
 background-color: #f7f7f7;
