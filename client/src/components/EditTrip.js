@@ -31,6 +31,7 @@ const TripForm = ({ props, errors, touched, values, status }) => { //{trips} get
 
     const handleChanges = event => {
       event.persist();
+      event.preventDefault();
       setTrip({
         ...trip,
         [event.target.name]: event.target.value
@@ -45,7 +46,7 @@ const TripForm = ({ props, errors, touched, values, status }) => { //{trips} get
     return (
         <div className="editTrip">
             <h1>Edit This Trip</h1>
-            <Form className="addTrip">
+            <Form className="addTrip" onSubmit={saveEdit}>
                 <Field 
                   type="text" 
                   name="title" 
@@ -114,7 +115,7 @@ const TripForm = ({ props, errors, touched, values, status }) => { //{trips} get
                     <p classname="error">{errors.image}</p>
                 )}
 
-                <button className="submitButton" type="submit" onClick={saveEdit}>Save</button>
+                <button className="submitButton" type="button">Save</button>
                 <Link className="submitButton" to='/profile'>Cancel</Link>
             </Form>
 
@@ -134,7 +135,7 @@ const FormikTripForm = withFormik({
           date: date || '',
           location: location || '',
           image: image || '',
-          user_id: user_id || ''
+          // user_id: user_id || ''
         };
       },
 
