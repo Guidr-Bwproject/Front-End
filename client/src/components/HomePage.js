@@ -2,23 +2,19 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import HomePageCards from "./HomePageCards";
 import styled from "styled-components";
-import arrowIMG from '../imgs/arrow-alt-circle-down-regular.svg'
-
+import arrowIMG from '../imgs/arrow-alt-circle-down-regular.svg';
 import HomePageProfileCard from "./HomePageProfileCard";
 import AboutCreatorCard from "./AboutCreators"
-
-
-
 
 export default function HomePage() {
   const [trips, setTrips] = useState([]);
 
   useEffect(() =>{
-    axios
+      axios
       .get('https://guidr-app.herokuapp.com/api/trips')
       .then(response =>{
-        setTrips(response.trips.results)
-        console.log(trips);
+        setTrips(response.data)
+        console.log('Trips Data Response', response.data);
       })
       .catch(error =>{
         console.log(error);
@@ -33,17 +29,16 @@ export default function HomePage() {
             <h4 className="leftTitle">Welcome!</h4>
             <HomePageProfileCard />
           </div>
-        <div className="middleContent">
-          <h4 className='title'>Current Trips <img className='arrowIMG' src={arrowIMG} width='50' height='50' color='white' /> </h4>
-        {trips.map(trip =>{
-          return <HomePageCards key={trip.id} {...trip} />;
-        })}
-        <HomePageCards />
-        </div>
-        <div className="rightContent">
-          <h4 className="rightTitle">Meet the Team</h4>
-          <AboutCreatorCard />
-        </div>
+          <div className="middleContent">
+            <h4 className='title'>Current Trips <img alt="" className='arrowIMG' src={arrowIMG} width='50' height='50' color='white' /> </h4>
+            {trips.map(trip =>{
+              return <HomePageCards key={trip.id} {...trip} trip={trip} id={trip.id}/>;
+            })}
+          </div>
+          <div className="rightContent">
+            <h4 className="rightTitle">Meet the Team</h4>
+            <AboutCreatorCard />
+          </div>
         </div>
       </StyledHomePage>
     </section>
@@ -86,15 +81,31 @@ const StyledHomePage = styled.div `
   width: 50%;
   margin: auto;
   margin-top: 0%;
+
+  @media screen and (max-width: 500px){
+    width: 90%;
+  }
+
+  @media screen and (max-width: 800px){
+    width: 80%;
+  }
 }
 
 .rightContent{
   width: 25%;
 
+  @media screen and (max-width: 800px){
+    width: 90%;
+    margin: auto;
+  }
+
+
   .rightTitle{
     color: white;
     text-shadow: 1px 1px 1px black;
     font-size: 2rem;
+  }
+    
   }
 }
 `;
