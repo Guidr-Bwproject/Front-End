@@ -7,6 +7,7 @@ import Login from './components/Login'
 import FormikProfileForm from './components/Profile'
 import FormikRegister from './components/RegistrationForm';
 import TripDetails from './components/TripDetails';
+import Profile2 from './components/Profile2';
 
 import { Route, Link } from 'react-router-dom'
 
@@ -21,7 +22,7 @@ function App() {
         
         <div className='links'>
           <Link to='/'>Home</Link>
-          <Link to='/profile'>Profile</Link>
+          <Link to='/profile'>Add Trip</Link>
           <Link to='/profile2'>Your Profile</Link>
           <Link to='/login'>Login</Link>
           <Link to='/signup'>Sign Up</Link>
@@ -34,7 +35,7 @@ function App() {
       <Route exact path='/login' component={Login} />
       <Route exact path='/signup' component={FormikRegister} />
       <Route path='/trips/:id' render={(props) => <TripDetails {...props} />} />
-
+      <Route exact path='/profile2' component={Profile2} />
 
     </div>
   );
