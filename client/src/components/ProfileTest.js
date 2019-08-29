@@ -7,55 +7,18 @@ import FormikEditTripForm from "./EditTrip";
 
 import { TripsContext } from '../contexts/TripsContext'
 
-
-
-const initialTrip = {
-  id: '',
-  user_id: 1, //make sure this gets updated
-  title: '',
-  description: '',
-  professional: false,
-  duration: '',
-  date: '',
-  location: '',
-  image: ''
-}
-
-export default function TripsTest() {
+export default function ProfileTest() {
   const {trips, setTrips} = useContext(TripsContext)
-
-  // const [trips, setTrips] = useState([]);
-  const [tripData, setTripData] = useState(initialTrip);
-  // const [editing, setEditing] = useState(false);
-  const [tripToEdit, setTripToEdit] = useState(initialTrip);
-
-
-  const editTrip = trip => {
-    // setEditing(true)
-    setTripToEdit(trip)
-  }
 
   return(
     <section className="homePageView">
       <StyledHomePage>
         <div className="homeView">
         <div className="middleContent">
-          <FormikEditTripForm 
-            trips={trips} 
-            setTrips={setTrips} 
-            tripData={tripData} 
-          />
+          <FormikEditTripForm />
         {trips.map(trip =>{
           return (
-            <TripsTestCards 
-              key={trip.id} 
-              id={trip.id}
-              {...trip} 
-              trip={trip} 
-              editTrip={editTrip} 
-              setTripData={setTripData} 
-            />
-            
+            <TripsTestCards key={trip.id} id={trip.id} />
           );
         })}
         </div>

@@ -6,37 +6,42 @@ import * as Yup from 'yup';
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import { Link } from 'react-router-dom'
 import { TripContext } from '../contexts/TripContext'
+import { TripsContext } from '../contexts/TripsContext';
 
 // *** Edit TRIP FORM *** //
 
 
-const TripForm = ({ errors, touched, values, status }) => { //{trips} gets passed into from the profile where there is state that makes the axios request
+const TripForm = ({ props, errors, touched, values, status }) => { //{trips} gets passed into from the profile where there is state that makes the axios request
     const {trip, setTrip} = useContext(TripContext)
-    const saveEdit = (trip) => {
-        axiosWithAuth()
+    const {trips, setTrips} = useContext(TripsContext)
+    const saveEdit = (event) => {
+      event.preventDefault()
+      console.log(trip.id)
+      axiosWithAuth()
           .put(`https://guidr-app.herokuapp.com/api/trips/${trip.id}`, trip)
           .then(res => {
-            // console.log(res)
-            // setStatus(res.data);
+            console.log(res)
+            // setTrips(res.data);
             // resetForm();
             // setSubmitting();
-            // props.history.push('/profile')
+            props.history.push('/profiletest')
           })
           .catch(err => console.log(err.response));
       }
     
 
-    const handleChanges = e => {
+    const handleChanges = event => {
+      event.persist();
       setTrip({
         ...trip,
-        [e.target.name]: e.target.value
+        [event.target.name]: event.target.value
       })
     }
-    // useEffect(() => {
-    //     if (status) {
-    //       setTrip(trip => status);
-    //     }
-    //   }, [status]);
+    useEffect(() => {
+        if (status) {
+          setTrip(trip => status);
+        }
+      }, [status]);
 
     return (
         <div className="editTrip">

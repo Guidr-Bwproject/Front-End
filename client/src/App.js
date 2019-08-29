@@ -14,6 +14,7 @@ import { TripContext } from './contexts/TripContext'
 
 import { Route, Link } from 'react-router-dom'
 import ProfileTest from './components/ProfileTest';
+import Profile2 from './components/Profile2'
 
 function App() {
 
@@ -52,7 +53,7 @@ function App() {
       </div>
    
       <Route exact path='/' component={HomePage} />
-      {/* <Route exact path='/profile' component={Profile} /> */}
+      <Route exact path='/profile2' component={Profile2} />
       <Route exact path='/addtrip' component={FormikTripForm} />
       <Route exact path='/login' component={FormikLogin} />
       <Route exact path='/signup' component={FormikRegister} />

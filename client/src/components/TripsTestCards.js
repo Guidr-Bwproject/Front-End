@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { TripsContext } from '../contexts/TripsContext'
 import { TripContext } from '../contexts/TripContext'
 
-export default function TripsTestCards({ setTripData, editTrip, username, title, date, description, id }) {
+export default function TripsTestCards({ username, title, date, description, image, id }) {
   
   const {trips, setTrips} = useContext(TripsContext)
   const {trip, setTrip} = useContext(TripContext)
@@ -15,11 +15,11 @@ export default function TripsTestCards({ setTripData, editTrip, username, title,
     <StyledHomeCards>
     <div className="homeCard">
     <Card className="CardContainer">
-      <Image src={Mountain} fluid className="cardImage"/>
+      <Image src={trip.image} fluid className="cardImage"/>
       <Card.Content style={{padding: "1% 5%"}}>
-        <Card.Header className="cardHeader">{title}</Card.Header>
+        <Card.Header className="cardHeader">{trip.title}</Card.Header>
         <Card.Meta className="cardMeta">
-        <Link to="/${user-id}" className="cardGuideLink">Guide Name{username} | Date{date}</Link>
+        <Link to="/${user-id}" className="cardGuideLink">Guide Name: {username} | Date: {date}</Link>
         </Card.Meta>
         <Card.Description style={{textAlign: "left", width: "80%", margin: "auto"}}>
         {description}
@@ -29,7 +29,8 @@ export default function TripsTestCards({ setTripData, editTrip, username, title,
         </Card.Description>
       </Card.Content>
       {/* <p>{JSON.stringify(trip)}</p> */}
-      <button type="button" onClick={() => {
+      <button type="button" onClick={(event) => {
+        event.preventDefault()
         setTrip(trips.find(i => i.id === id))
         console.log(trip)
       }}>edit trip</button>
