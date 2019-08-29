@@ -1,11 +1,16 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Card, Image, Button} from "semantic-ui-react";
 import Mountain from "../imgs/Mountain.jpg";
 import {Route, Link} from "react-router-dom";
 import styled from "styled-components";
 
+import { TripsContext } from '../contexts/TripsContext'
+import { TripContext } from '../contexts/TripContext'
 
-export default function HomePageCards ({username, title, date, description, openModal, closeModal}){
+export default function TripsTestCards({ setTripData, editTrip, username, title, date, description, id }) {
+  
+  const {trips, setTrips} = useContext(TripsContext)
+  const {trip, setTrip} = useContext(TripContext)
   return(
     <StyledHomeCards>
     <div className="homeCard">
@@ -23,7 +28,11 @@ export default function HomePageCards ({username, title, date, description, open
         <Link to="/${trip-id}" className="homePageCardLink">Click here for trip details</Link>
         </Card.Description>
       </Card.Content>
-      <button type="button" onClick={() => openModal()}>edit trip</button>
+      {/* <p>{JSON.stringify(trip)}</p> */}
+      <button type="button" onClick={() => {
+        setTrip(trips.find(i => i.id === id))
+        console.log(trip)
+      }}>edit trip</button>
     </Card>
     </div>
     </StyledHomeCards>
