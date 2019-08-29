@@ -24,8 +24,8 @@ export default function TripDetails(props) {
 
   return(
     <section className="tripDetailView">
-          <TripDetailCard details={details} />;
-          {console.log(details)};
+      <TripDetailCard details={details} />;
+      {console.log(details)};
     </section>
   );
 }
