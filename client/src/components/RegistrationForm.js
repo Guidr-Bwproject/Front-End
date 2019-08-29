@@ -61,7 +61,7 @@ const Registration = ({ history, errors, touched, values, status }) => {
         className="input"
         type="text" 
         name="title" 
-        placeholder="Enter Title of Trip"
+        placeholder="Enter guide title"
 
         />
         {touched.title && errors.title && (
@@ -72,8 +72,8 @@ const Registration = ({ history, errors, touched, values, status }) => {
         className="input"
         type="text" 
         name="tagline" 
-        placeholder="Enter Short Description of Trip"
-
+        placeholder="Enter short description of the type of guide you are"
+  
         />
         {touched.tagline && errors.tagline && (
             <p className="error">{errors.tagline}</p>
@@ -83,7 +83,7 @@ const Registration = ({ history, errors, touched, values, status }) => {
         className="input"
         type="age" 
         name="age" 
-        placeholder="Enter Your Age"
+        placeholder="Enter your age"
 
         />
         {touched.age && errors.age && (
@@ -94,7 +94,7 @@ const Registration = ({ history, errors, touched, values, status }) => {
         className="input"
         type="text" 
         name="time_as_guide" 
-        placeholder="Enter How Long You Have Been A Guide"
+        placeholder="Enter how long you have been a guide"
 
         />
         {touched.time_as_guide && errors.time_as_guide && (
@@ -131,7 +131,7 @@ const FormikRegister = withFormik({
     username: Yup.string().required('Username is required!'),
     password: Yup.string().required('Password is required!'),
     email: Yup.string().required('Email is required'),
-    title: Yup.string().required('Enter trip type here'),
+    title: Yup.string().required('Enter guide title'),
     tagline: Yup.string().required('Trip description needed'),
     age: Yup.number().integer().required('Age needed'),
     time_as_guide: Yup.string().required('How long a guide'),
