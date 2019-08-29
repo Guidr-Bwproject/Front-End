@@ -5,9 +5,9 @@ import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 
-// *** PROFILE FORM *** //
+// *** ADD TRIP FORM *** //
 
-const ProfileForm = ({ errors, touched, values, status }) => {
+const TripForm = ({ errors, touched, values, status }) => {
     const [trip, setTrip] = useState({
       user_id: 1,
       title: '',
@@ -28,7 +28,7 @@ const ProfileForm = ({ errors, touched, values, status }) => {
 
     return (
         <div className="profileForm">
-            <h1>Your Profile!</h1>
+            <h1>Log a Trip!</h1>
             <Form className="addTrip">
                 <Field type="text" name="title" placeholder="Enter Title of Trip"/>
                 {touched.title && errors.title && (
@@ -80,8 +80,8 @@ const ProfileForm = ({ errors, touched, values, status }) => {
 
 // *** FORMIK - PROFILE FROM *** //
 
-const FormikProfileForm = withFormik({
-    mapPropsToValues({ title, description, professional, duration, date, location, image }) {
+const FormikTripForm = withFormik({
+    mapPropsToValues({ title, description, professional, duration, date, location, image, user_id }) {
         return {
           title: title || '',
           description: description || '',
@@ -89,21 +89,24 @@ const FormikProfileForm = withFormik({
           duration: duration || '',
           date: date || '',
           location: location || '',
-          image: image || ''
+          image: image || '',
+          user_id: user_id || 1
         };
       },
 
 // *** YUP STUFF *** //
 
 validationSchema: Yup.object().shape({
+    title: Yup.string().required('Please enter trip title'),
+    description: Yup.string().required('Please enter trip description'),
+    duration: Yup.string().required('Please enter trip duration'),
+    date: Yup.string().required('Please enter date start'),
+    location: Yup.string().required('Please enter trip location'),
+    image: Yup.string().required('Please enter trip image URL'),
     username: Yup.string().required('Please enter username'),
-    title: Yup.string().required('Please enter title'),
-    tagline: Yup.string().required('Please enter tagline'),
-    age: Yup.integer().required('Please enter age'),
-    timeAsGuide: Yup.string().required('Please enter time as guide'),
   }),
 
-  handleSubmit(values, { setStatus, resetForm, setSubmitting }) {
+  handleSubmit(values, { props, setStatus, resetForm, setSubmitting }) {
     const newValues = {...values, user_id: 1}
     axiosWithAuth()
       .post('https://guidr-app.herokuapp.com/api/trips', newValues) // ADD BACKEND TIE-IN WHEN AVAILABLE
@@ -112,15 +115,16 @@ validationSchema: Yup.object().shape({
         setStatus(res.data);
         resetForm();
         setSubmitting();
+        props.history.push('/profile')
       })
       .catch(err => console.log(err.response));
   }
 
 
 
-})(ProfileForm);
+})(TripForm);
 
-export default FormikProfileForm;
+export default FormikTripForm;
 
 
 

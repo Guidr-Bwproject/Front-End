@@ -10,11 +10,11 @@ export default function HomePage() {
   const [trips, setTrips] = useState([]);
 
   useEffect(() =>{
-    axios
+      axios
       .get('https://guidr-app.herokuapp.com/api/trips')
       .then(response =>{
         setTrips(response.data)
-        console.log(response);
+        console.log('Trips Data Response', response.data);
       })
       .catch(error =>{
         console.log(error);

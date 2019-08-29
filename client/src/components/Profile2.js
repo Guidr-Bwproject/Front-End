@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import HomePageProfileCard from "./HomePageProfileCard";
 import HomePageCards from "./HomePageCards";
-
+import { Button } from 'semantic-ui-react'
 
 
 
@@ -28,7 +28,7 @@ export default function Profile2() {
       <StyledProfilePage>
         <div className="ProfileView">
             <div className="mainContent">
-                <h4 className='title'>About Me <img className='arrowIMG' src={arrowIMG} width='50' height='50' color='white' /> </h4>
+                  <h4 className='title'>About Me <img className='arrowIMG'  width='50' height='50' color='white' /> </h4> {/*src={arrowIMG*/}}
                     <HomePageProfileCard />
                         <div className="buttons">
                             <Button href="      ">Read Stories</Button>
@@ -37,7 +37,7 @@ export default function Profile2() {
                         {trips.map(trip =>{
                             return <HomePageCards key={trip.id} {...trip} />; // NOT SURE HOW TO LIST TRIPS OF SINGLE USER??
                         })}
-                            <HomePageCards />
+                            
             </div>
         </div>
       </StyledProfilePage>
