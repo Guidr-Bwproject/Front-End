@@ -64,7 +64,7 @@ function App() {
         </TripContext.Provider>
       </TripsContext.Provider>
       <Route path='/trips/:id' render={(props) => <TripDetails {...props} />} />
-      <Route exact path='/profile2' component={Profile2} />
+
 
     </div>
   );
