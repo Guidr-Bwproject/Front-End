@@ -15,6 +15,7 @@ import { TripContext } from './contexts/TripContext'
 import { Route, Link } from 'react-router-dom'
 import ProfileTest from './components/ProfileTest';
 import Profile2 from './components/Profile2'
+import Footer from './components/Footer'
 
 function App() {
 
@@ -65,7 +66,7 @@ function App() {
       </TripsContext.Provider>
       <Route path='/trips/:id' render={(props) => <TripDetails {...props} />} />
 
-
+      <Footer />
     </div>
   );
 }
