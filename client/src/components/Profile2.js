@@ -30,10 +30,10 @@ export default function Profile2() {
       <StyledProfilePage>
         <div className="ProfileView">
             <div className="mainContent">
-                  <h4 className='title'>About Me <img className='arrowIMG'  width='50' height='50' color='white' /> </h4> {/*src={arrowIMG*/}}
+                  <h4 className='title'>About Me <img className='arrowIMG' src={arrowIMG} width='50' height='50' color='white' /> </h4> 
                     <HomePageProfileCard />
                         <div className="buttons">
-                            <Button href="      ">Read Stories</Button>
+                            <Button href="https://guidrapp.netlify.com/stories-page.html">Read Stories</Button>
                             <Button href="/Profile">Log A Trip</Button>
                         </div>
                         {trips.map(trip =>{
@@ -71,6 +71,12 @@ const StyledProfilePage = styled.div `
     justify-content: space between;
 }
 .buttons Button{
-    
+  background-color: #314b11;
+  color: white;
+  width: 100%;
+  border-radius: 10px;
+  border: solid 3px #314b11;
+  font-size: 2rem;
+  padding: 3%;
 }
 `;
