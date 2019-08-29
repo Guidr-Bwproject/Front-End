@@ -103,6 +103,7 @@ validationSchema: Yup.object().shape({
     date: Yup.string().required('Please enter date start'),
     location: Yup.string().required('Please enter trip location'),
     image: Yup.string().required('Please enter trip image URL'),
+    username: Yup.string().required('Please enter username'),
   }),
 
   handleSubmit(values, { props, setStatus, resetForm, setSubmitting }) {

@@ -1,31 +1,27 @@
 import React from "react";
-import {Card, Image, Button} from "semantic-ui-react";
-import Mountain from "../imgs/Mountain.jpg";
-import {Route, Link} from "react-router-dom";
+import {Card, Image} from "semantic-ui-react";
+import {Link} from "react-router-dom";
 import styled from "styled-components";
 
 
-export default function HomePageCards ({username, title, date, description, openModal, closeModal}){
+export default function HomePageCards ({title, date, description, image, id}){
   return(
     <StyledHomeCards>
-    <div className="homeCard">
-    <Card className="CardContainer">
-      <Image src={Mountain} fluid className="cardImage"/>
-      <Card.Content style={{padding: "1% 5%"}}>
-        <Card.Header className="cardHeader">{title}</Card.Header>
-        <Card.Meta className="cardMeta">
-        <Link to="/${user-id}" className="cardGuideLink">Guide Name{username} | Date{date}</Link>
-        </Card.Meta>
-        <Card.Description style={{textAlign: "left", width: "80%", margin: "auto"}}>
-        {description}
-        </Card.Description>
-        <Card.Description className="cardLink">
-        <Link to="/${trip-id}" className="homePageCardLink">Click here for trip details</Link>
-        </Card.Description>
-      </Card.Content>
-      <button type="button" onClick={() => openModal()}>edit trip</button>
-    </Card>
-    </div>
+      <div className="homeCard">
+        <Card className="CardContainer">
+          <Image src={image} fluid className="cardImage"/>
+          <Card.Content className="cardContent">
+            <Card.Header className="cardHeader">{title}</Card.Header>
+            <Card.Meta className="cardMeta">
+              <Link to="#" className="cardGuideLink">Guide Name | {date}</Link>
+            </Card.Meta>
+            <Card.Description className="description">{description}</Card.Description>
+            <Card.Description className="cardLink">
+              <Link to={`/trips/${id}`} className="homePageCardLink">Click here for trip details</Link>
+            </Card.Description>
+          </Card.Content>
+        </Card>
+      </div>
     </StyledHomeCards>
   )
 }
@@ -45,6 +41,10 @@ const StyledHomeCards = styled.div `
 width: 100%;
 height: 200px;
 border-radius: 10px 10px 0px 0px;
+}
+
+.cardContent{
+  padding: 1% 5%;
 }
 
 .cardHeader{
@@ -67,6 +67,12 @@ font-family: "Roboto";
 .cardGuideLink:hover{
   cursor: pointer;
   color: #496e1b;
+}
+
+.description{
+  text-align: left;
+  width: 80%;
+  margin: auto;
 }
 
 .cardLink{

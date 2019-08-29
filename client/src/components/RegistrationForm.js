@@ -11,14 +11,16 @@ const Registration = ({ history, errors, touched, values, status }) => {
   const [user, setUser] = useState([])
   useEffect(() => {
     if (status) {
-      setUser(user => status) // ({...user, status})
+      setUser(user => status) 
     }
   }, [status])
 
   return (
-    <div className="loginPage">
+    <div className="signupPage">
       <h1 className='loginTitle'>Register</h1>
+     <div className="contain">
       <Form>
+      <div className="1">
         <Field 
           className="input"
           type="text"
@@ -52,70 +54,68 @@ const Registration = ({ history, errors, touched, values, status }) => {
           <p className="error">{errors.password}</p>
         )}
 
+       
+       </div>
+       <div className="2">     
         <Field 
-          className="input"
-          type="password"
-          name="confirmPassword"
-          placeholder="Confirm Password"
-          
-        />
-        {touched.confirmPassword && errors.confirmPassword && (
-          <p className="error">{errors.confirmPassword}</p>
-        )}
-
-        <Field 
+        className="input"
         type="text" 
         name="title" 
         placeholder="Enter Title of Trip"
 
         />
         {touched.title && errors.title && (
-            <p classname="error">{errors.title}</p>
+            <p className="error">{errors.title}</p>
         )}
 
         <Field 
+        className="input"
         type="text" 
         name="tagline" 
         placeholder="Enter Short Description of Trip"
 
         />
         {touched.tagline && errors.tagline && (
-            <p classname="error">{errors.tagline}</p>
+            <p className="error">{errors.tagline}</p>
          )}
                 
         <Field 
+        className="input"
         type="age" 
         name="age" 
         placeholder="Enter Your Age"
 
         />
         {touched.age && errors.age && (
-            <p classname="error">{errors.age}</p>
+            <p className="error">{errors.age}</p>
         )}
                 
         <Field 
-        type="time" 
-        name="time" 
+        className="input"
+        type="text" 
+        name="time_as_guide" 
         placeholder="Enter How Long You Have Been A Guide"
 
         />
-        {touched.time && errors.time && (
-             <p classname="error">{errors.time}</p>
+        {touched.time_as_guide && errors.time_as_guide && (
+             <p className="error">{errors.time_as_guide}</p>
         )}
+       </div> 
 
-        <button className='loginButton'>Register</button>
-        <p className="accountText">Already have an account?{'Log in'}
+        <button  type='submit' className='registerButton'>Register</button>
+        <p className="accountText">Already have an account?{' '}
           <Link to='/login' className="accountLink">
             Log in
           </Link>
         </p>
       </Form>
+     </div> 
     </div>
   )
 }
 
 const FormikRegister = withFormik({
-  mapPropsToValues({ username, password, email, title, tagline, age, timeAsGuide}) {
+  mapPropsToValues({ username, password, email, title, tagline, age, time_as_guide}) {
     return {
       username: username || '',
       password: password || '',
@@ -123,7 +123,7 @@ const FormikRegister = withFormik({
       title: title || '',
       tagline: tagline || '',
       age: age || '',
-      timeAsGuide: timeAsGuide || ''
+      time_as_guide: time_as_guide || ''
     }
   },
 
@@ -131,10 +131,10 @@ const FormikRegister = withFormik({
     username: Yup.string().required('Username is required!'),
     password: Yup.string().required('Password is required!'),
     email: Yup.string().required('Email is required'),
-    title: Yup.string().required('Please enter email'),
-    tagline: Yup.string().required('Please enter password'),
-    age: Yup.number().integer().required('Please accept Terms of Service'),
-    timeAsGuide: Yup.string().required('Please enter password'),
+    title: Yup.string().required('Enter trip type here'),
+    tagline: Yup.string().required('Trip description needed'),
+    age: Yup.number().integer().required('Age needed'),
+    time_as_guide: Yup.string().required('How long a guide'),
   }),
 
   handleSubmit(values, {props, setStatus}) {
