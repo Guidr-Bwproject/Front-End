@@ -8,6 +8,7 @@ import FormikLogin from './components/Login'
 import FormikTripForm from './components/TripForm'
 import FormikRegister from './components/RegistrationForm';
 import TripDetails from './components/TripDetails';
+import Profile2 from './components/Profile2';
 
 import { TripsContext } from './contexts/TripsContext'
 import { TripContext } from './contexts/TripContext'
@@ -44,7 +45,7 @@ function App() {
         
         <div className='links'>
           <Link to='/'>Home</Link>
-          <Link to='/profile'>Profile</Link>
+          <Link to='/profile'>Add Trip</Link>
           <Link to='/profile2'>Your Profile</Link>
           <Link to='/login'>Login</Link>
           <Link to='/signup'>Sign Up</Link>
@@ -64,7 +65,7 @@ function App() {
         </TripContext.Provider>
       </TripsContext.Provider>
       <Route path='/trips/:id' render={(props) => <TripDetails {...props} />} />
-
+      <Route exact path='/profile2' component={Profile2} />
 
     </div>
   );
