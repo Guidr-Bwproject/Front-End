@@ -104,13 +104,12 @@ validationSchema: Yup.object().shape({
     location: Yup.string().required('Please enter trip location'),
     image: Yup.string().required('Please enter trip image URL'),
     username: Yup.string().required('Please enter username'),
-<<<<<<< HEAD:client/src/components/Profile.js
+
     title: Yup.string().required('Please enter title'),
     tagline: Yup.string().required('Please enter tagline'),
-    // age: Yup.integer().required('Please enter age'),
+     age: Yup.string().required('Please enter age'),
     timeAsGuide: Yup.string().required('Please enter time as guide'),
-=======
->>>>>>> master:client/src/components/TripForm.js
+
   }),
 
   handleSubmit(values, { props, setStatus, resetForm, setSubmitting }) {
