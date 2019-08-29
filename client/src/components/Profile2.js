@@ -5,7 +5,7 @@ import arrowIMG from '../imgs/arrow-alt-circle-down-regular.svg';
 
 import HomePageProfileCard from "./HomePageProfileCard";
 import HomePageCards from "./HomePageCards";
-import { Button } from 'semantic-ui-react'
+
 
 
 

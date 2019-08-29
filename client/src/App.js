@@ -14,7 +14,7 @@ import { TripContext } from './contexts/TripContext'
 
 import { Route, Link } from 'react-router-dom'
 import ProfileTest from './components/ProfileTest';
-import Profile2 from './components/Profile2'
+
 
 function App() {
 
