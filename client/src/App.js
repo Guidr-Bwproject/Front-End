@@ -9,7 +9,6 @@ import FormikTripForm from './components/TripForm'
 import FormikRegister from './components/RegistrationForm';
 import TripDetails from './components/TripDetails';
 import Profile2 from './components/Profile2';
-
 import { TripsContext } from './contexts/TripsContext'
 import { TripContext } from './contexts/TripContext'
 
@@ -65,7 +64,7 @@ function App() {
         </TripContext.Provider>
       </TripsContext.Provider>
       <Route path='/trips/:id' render={(props) => <TripDetails {...props} />} />
-      <Route exact path='/profile2' component={Profile2} />
+
 
     </div>
   );

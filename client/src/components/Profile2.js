@@ -3,7 +3,6 @@ import axios from "axios";
 import styled from "styled-components";
 import arrowIMG from '../imgs/arrow-alt-circle-down-regular.svg';
 import {Button} from "semantic-ui-react";
-
 import HomePageProfileCard from "./HomePageProfileCard";
 import HomePageCards from "./HomePageCards";
 
