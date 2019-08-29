@@ -8,7 +8,7 @@ import NicholasProfile from "../imgs/NicholasProfile.jpg";
 import MarkProfile from "../imgs/MarkProfile.png";
 import WaisProfile from "../imgs/WaisProfile.jpg";
 import HysenProfile from "../imgs/HysenProfile.JPG";
-import PandaMailbox from "../imgs/PandaMailbox.JPG";
+import YusufProfile from "../imgs/YusufProfile2.png";
 import styled from "styled-components";
 
 export default function AboutCreatorCard (){
@@ -17,7 +17,7 @@ export default function AboutCreatorCard (){
       <div className="creators">
         <div className="creatorCard">
           <Card className="creatorCardContainer">
-            <Image src={PandaMailbox} fluid className="creatorPic"/>
+            <Image src={YusufProfile} fluid className="creatorPic"/>
             <Card.Content>
               <Card.Header className="cardHeader">
                 Yusuf Nafey

@@ -12,7 +12,7 @@ export default function HomePageProfileCard (){
           <Image src={JennHiking} fluid className="image"/>
           <Card.Content className="cardContent">
             <Card.Header className="cardHeader">
-              <Link to="/profile" className="userLink">User Name</Link>
+              <Link to="/profile2" className="userLink">User Name</Link>
             </Card.Header>
             <Card.Meta className="cardMeta">Guidr Pro</Card.Meta>
           </Card.Content>

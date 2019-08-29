@@ -8,14 +8,14 @@ import FormikLogin from './components/Login'
 import FormikTripForm from './components/TripForm'
 import FormikRegister from './components/RegistrationForm';
 import TripDetails from './components/TripDetails';
-
+import Profile2 from './components/Profile2';
 import { TripsContext } from './contexts/TripsContext'
 import { TripContext } from './contexts/TripContext'
 
 import { Route, Link } from 'react-router-dom'
 import ProfileTest from './components/ProfileTest';
-import Profile2 from './components/Profile2'
 import Footer from './components/Footer'
+
 
 function App() {
 
@@ -45,7 +45,7 @@ function App() {
         
         <div className='links'>
           <Link to='/'>Home</Link>
-          <Link to='/profile'>Profile</Link>
+          <Link to='/profile'>Add Trip</Link>
           <Link to='/profile2'>Your Profile</Link>
           <Link to='/login'>Login</Link>
           <Link to='/signup'>Sign Up</Link>
