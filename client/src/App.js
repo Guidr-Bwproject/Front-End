@@ -21,7 +21,7 @@ function App() {
 
   const [trips, setTrips] = useState([])
   const [trip, setTrip] = useState({})
-  console.log('trip', trip)
+  // console.log('trip', trip)
 
   useEffect(() =>{
     axios
@@ -33,7 +33,7 @@ function App() {
     .catch(error =>{
       console.log(error);
     });
-},[]);
+},[trips]);
 
   return (
     <div className="App">

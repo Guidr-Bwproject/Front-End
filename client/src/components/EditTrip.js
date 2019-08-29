@@ -4,30 +4,44 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 import { axiosWithAuth } from '../utils/axiosWithAuth'
-import { Link } from 'react-router-dom'
+import axios from 'axios';
+import { Link, history } from 'react-router-dom'
 import { TripContext } from '../contexts/TripContext'
 import { TripsContext } from '../contexts/TripsContext';
 
 // *** Edit TRIP FORM *** //
 
 
-const TripForm = ({ props, errors, touched, values, status }) => { //{trips} gets passed into from the profile where there is state that makes the axios request
+const TripForm = ({ errors, touched, values, status }) => { //{trips} gets passed into from the profile where there is state that makes the axios request
+    
     const {trip, setTrip} = useContext(TripContext)
     const {trips, setTrips} = useContext(TripsContext)
+
     const saveEdit = (event) => {
       event.preventDefault()
       axiosWithAuth()
           .put(`https://guidr-app.herokuapp.com/api/trips/${trip.id}`, trip)
           .then(res => {
-            console.log(res)
-            // setTrips(res.data);
+            console.log(res.config.data)
+            // setTrips(trips);
             // resetForm();
             // setSubmitting();
-            // props.history.push('/profiletest')
+            // history.push('/profiletest')
           })
           .catch(err => console.log(err.response));
       }
     
+    const getTrips = (event) => {
+      event.preventDefault()
+      axios
+        .get('https://guidr-app.herokuapp.com/api/trips')
+        .then(res => {
+          setTrips(res.data)
+        })
+        .catch(err => {
+          console.log(err.response)
+        })
+    }
 
     const handleChanges = event => {
       event.persist();
@@ -39,7 +53,7 @@ const TripForm = ({ props, errors, touched, values, status }) => { //{trips} get
     }
     useEffect(() => {
         if (status) {
-          setTrip(trip => status);
+          setTrips(trip => status);
         }
       }, [status]);
 
@@ -115,7 +129,7 @@ const TripForm = ({ props, errors, touched, values, status }) => { //{trips} get
                     <p classname="error">{errors.image}</p>
                 )}
 
-                <button className="submitButton" type="button">Save</button>
+                <button className="submitButton" type="submit">Save</button>
                 <Link className="submitButton" to='/profile'>Cancel</Link>
             </Form>
 
