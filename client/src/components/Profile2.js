@@ -6,7 +6,7 @@ import {Button} from "semantic-ui-react";
 
 import HomePageProfileCard from "./HomePageProfileCard";
 import HomePageCards from "./HomePageCards";
-import { Button } from 'semantic-ui-react'
+
 
 
 
