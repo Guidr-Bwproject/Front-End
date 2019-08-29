@@ -16,7 +16,6 @@ const TripForm = ({ props, errors, touched, values, status }) => { //{trips} get
     const {trips, setTrips} = useContext(TripsContext)
     const saveEdit = (event) => {
       event.preventDefault()
-      console.log(trip.id)
       axiosWithAuth()
           .put(`https://guidr-app.herokuapp.com/api/trips/${trip.id}`, trip)
           .then(res => {
@@ -24,7 +23,7 @@ const TripForm = ({ props, errors, touched, values, status }) => { //{trips} get
             // setTrips(res.data);
             // resetForm();
             // setSubmitting();
-            props.history.push('/profiletest')
+            // props.history.push('/profiletest')
           })
           .catch(err => console.log(err.response));
       }

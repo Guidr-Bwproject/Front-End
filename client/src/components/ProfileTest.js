@@ -18,7 +18,7 @@ export default function ProfileTest() {
           <FormikEditTripForm />
         {trips.map(trip =>{
           return (
-            <TripsTestCards key={trip.id} id={trip.id} />
+            <TripsTestCards key={trip.id} id={trip.id} {...trip} />
           );
         })}
         </div>

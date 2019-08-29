@@ -15,9 +15,9 @@ export default function TripsTestCards({ username, title, date, description, ima
     <StyledHomeCards>
     <div className="homeCard">
     <Card className="CardContainer">
-      <Image src={trip.image} fluid className="cardImage"/>
+      <Image src={image} fluid className="cardImage"/>
       <Card.Content style={{padding: "1% 5%"}}>
-        <Card.Header className="cardHeader">{trip.title}</Card.Header>
+        <Card.Header className="cardHeader">{title}</Card.Header>
         <Card.Meta className="cardMeta">
         <Link to="/${user-id}" className="cardGuideLink">Guide Name: {username} | Date: {date}</Link>
         </Card.Meta>
