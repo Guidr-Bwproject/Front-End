@@ -23,7 +23,7 @@ function App() {
 
   const [trips, setTrips] = useState([])
   const [trip, setTrip] = useState({})
-  const [loggedUser, setLoggedUser] = useState({})
+  const [loggedUser, setLoggedUser] = useState({id: 2})
   // console.log('trip', trip)
 
  

@@ -17,10 +17,10 @@ const Registration = ({ history, errors, touched, values, status }) => {
 
   return (
     <div className="signupPage">
-      <h1 className='loginTitle'>Register</h1>
+      <span className='loginTitle'>Register</span>
      <div className="contain">
       <Form>
-      <div className="1">
+      <div className="top-inputs">
         <Field 
           className="input"
           type="text"
@@ -56,12 +56,12 @@ const Registration = ({ history, errors, touched, values, status }) => {
 
        
        </div>
-       <div className="2">     
+       <div className="bottom-inputs">     
         <Field 
         className="input"
         type="text" 
         name="title" 
-        placeholder="Enter Title of Trip"
+        placeholder="Guide Title"
 
         />
         {touched.title && errors.title && (
@@ -72,7 +72,7 @@ const Registration = ({ history, errors, touched, values, status }) => {
         className="input"
         type="text" 
         name="tagline" 
-        placeholder="Enter Short Description of Trip"
+        placeholder="What's your tagline?"
 
         />
         {touched.tagline && errors.tagline && (
@@ -83,7 +83,7 @@ const Registration = ({ history, errors, touched, values, status }) => {
         className="input"
         type="age" 
         name="age" 
-        placeholder="Enter Your Age"
+        placeholder="Age"
 
         />
         {touched.age && errors.age && (
@@ -94,7 +94,7 @@ const Registration = ({ history, errors, touched, values, status }) => {
         className="input"
         type="text" 
         name="time_as_guide" 
-        placeholder="Enter How Long You Have Been A Guide"
+        placeholder="Experience in years"
 
         />
         {touched.time_as_guide && errors.time_as_guide && (
@@ -102,7 +102,7 @@ const Registration = ({ history, errors, touched, values, status }) => {
         )}
        </div> 
 
-        <button  type='submit' className='registerButton'>Register</button>
+        <button  type='submit' className='loginButton'>Register</button>
         <p className="accountText">Already have an account?{' '}
           <Link to='/login' className="accountLink">
             Log in
@@ -143,8 +143,8 @@ const FormikRegister = withFormik({
       .then(res => {
         console.log('register', res.data)
         setStatus(res.data)
-        // localStorage.setItem(res.data.token)
-        props.history.push('/profile')
+        localStorage.setItem(res.data.token)
+        props.history.push('/profile2')
       })
       .catch(err => console.log(err.response))
   }
