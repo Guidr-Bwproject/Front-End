@@ -64,7 +64,7 @@ body {
   /* padding: 20px; */
   border-radius: 10px;
   /* margin: 100px 300px; */
-  margin: 8.5% 25%;
+  margin: 8.5% 25% 5% 20%;
   position: relative;
 }
 
@@ -85,7 +85,7 @@ body {
  }
 
 input {
-   padding: 14px;
+   padding: 8px;
    margin: 20px 0 0 0;
    width: 70%;
    border: solid 1px lightgrey;
@@ -95,7 +95,7 @@ input {
  }
 
  input::placeholder {
-   font-size: 16px;
+   font-size: 14px;
  }
 
  
@@ -189,12 +189,12 @@ input {
 
 .signupPage {
   background-color: white;
-  width: 25%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  margin-top: 7%;
-  margin-left: 15%;
+  margin-top: 4%;
+  margin-left: 5%;
   border-radius: 10px;
   justify-content: center;
   align-items: center;
@@ -202,10 +202,10 @@ input {
   
 }
 
-.signupPage .input {
+/* .signupPage .input {
   width: fit-content;
   margin-left: 20px;
-}
+} */
 
 .contain {
   height: fit-content;
@@ -214,11 +214,60 @@ input {
   
 }
 
-.loginTitle {
-  margin-top: -20px;
+.left-inputs, .right-inputs {
+  float: left;
+  width: 100%;
 }
 
-.registerButton {
+.top-inputs, .bottom-inputs {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.top-inputs .input {
+  margin: 5px;
+  width: 90%;
+}
+
+.bottom-inputs .input {
+  margin: 5px;
+  width: 41%;
+}
+
+@media (max-width: 500px) {
+  .top-inputs .input, .bottom-inputs .input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 920px) {
+  .top-inputs .input, .bottom-inputs .input {
+    width: 100%;
+  }
+  body {
+    background-image: none;
+  }
+  .signupPage {
+      border: 1px solid lightgray;
+      margin: 0 auto;
+      width: 80%;
+  }
+}
+
+@media (max-width: 500px) {
+  .signupPage {
+    width: 90%;
+    margin: 0 auto;
+    
+  }
+}
+
+/* .loginTitle {
+  margin-top: -20px;
+} */
+
+/* .registerButton {
   padding: 10px;
   padding-left: 30px;
   padding-right: 30px;
@@ -235,7 +284,7 @@ input {
 .registerButton:hover {
   cursor: pointer;
    background-color: #496e1b;
-}
+} */
 
 footer {
   width: 100%;

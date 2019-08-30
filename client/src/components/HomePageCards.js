@@ -5,12 +5,23 @@ import styled from "styled-components";
 import { TripsContext } from "../contexts/TripsContext"
 import { TripContext } from "../contexts/TripContext"
 import { UserContext } from "../contexts/UserContext"
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 export default function HomePageCards ({ props, title, date, description, image, id}){
   
   const {trips, setTrips} = useContext(TripsContext)
   const {trip, setTrip} = useContext(TripContext)
   const {loggedUser, setLoggedUser} = useContext(UserContext)
+  console.log(id)
+  const deleteTrip = (event) => {
+    
+    axiosWithAuth()
+      .delete(`https://guidr-app.herokuapp.com/api/trips/${id}`)
+      .then(res => {
+        const newTripsArr = trips.filter(i => i.id !== id)
+        setTrips(newTripsArr)
+      })
+  }
   
   return(
     <StyledHomeCards>
@@ -26,9 +37,13 @@ export default function HomePageCards ({ props, title, date, description, image,
             <Card.Description className="cardLink">
               <Link to={`/trips/${id}`} className="homePageCardLink">Click here for trip details</Link>
             </Card.Description>
-              <Link to="/edittrip" onClick={(event) => {
-                setTrip(trips.find(i => i.id === id))
-              }}>edit trip
+            <Link to="/edittrip" onClick={(event) => {
+              setTrip(trips.find(i => i.id === id))
+            }}>edit trip
+            </Link>
+            <Link to="/profile" onClick={(event) => {
+              deleteTrip()
+            }}>delete
             </Link>
           </Card.Content>
         </Card>
