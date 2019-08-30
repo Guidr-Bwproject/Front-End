@@ -7,6 +7,7 @@ import HomePageProfileCard from "./HomePageProfileCard";
 import AboutCreatorCard from "./AboutCreators"
 import { TripsContext } from "../contexts/TripsContext"
 import { UserContext } from "../contexts/UserContext"
+import StickyBox from "react-sticky-box";
 
 export default function HomePage(props) {
   const {trips, setTrips} = useContext(TripsContext)
@@ -31,8 +32,10 @@ export default function HomePage(props) {
       <StyledHomePage>
         <div className="homeView">
           <div className="leftContent">
-            <h4 className="leftTitle">Welcome!</h4>
-            <HomePageProfileCard /> 
+            <StickyBox offsetTop={20} offsetBottom={20}>
+              <h4 className="leftTitle">Welcome!</h4>
+              <HomePageProfileCard /> 
+            </StickyBox>
           </div>
           <div className="middleContent">
             <h4 className='title'>Current Trips <img alt="" className='arrowIMG' src={arrowIMG} width='50' height='50' color='white' /> </h4>
