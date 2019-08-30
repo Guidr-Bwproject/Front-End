@@ -6,22 +6,33 @@ import axios from 'axios'
 
 import FormikLogin from './components/Login'
 import FormikTripForm from './components/TripForm'
+import FormikEditTripForm from './components/EditTrip'
 import FormikRegister from './components/RegistrationForm';
 import TripDetails from './components/TripDetails';
 import Profile2 from './components/Profile2';
 import { TripsContext } from './contexts/TripsContext'
 import { TripContext } from './contexts/TripContext'
+import { UserContext } from './contexts/UserContext'
 
 import { Route, Link } from 'react-router-dom'
 import ProfileTest from './components/ProfileTest';
+import Footer from './components/Footer'
 
 
 function App() {
 
   const [trips, setTrips] = useState([])
   const [trip, setTrip] = useState({})
-  console.log('trip', trip)
+  const [loggedUser, setLoggedUser] = useState({})
+  // console.log('trip', trip)
 
+ 
+  const getUser = JSON.parse(localStorage.getItem('user'))
+  console.log(getUser)
+  useEffect(() => {
+    setLoggedUser(getUser)
+  }, [])
+console.log(loggedUser)
   useEffect(() =>{
     axios
     .get('https://guidr-app.herokuapp.com/api/trips')
@@ -44,28 +55,49 @@ function App() {
         
         <div className='links'>
           <Link to='/'>Home</Link>
-          <Link to='/profile'>Add Trip</Link>
-          <Link to='/profile2'>Your Profile</Link>
+          <Link to='/addtrip'>Add Trip</Link>
+          <Link to='/profile'>Your Profile</Link>
           <Link to='/login'>Login</Link>
           <Link to='/signup'>Sign Up</Link>
         </div>
        
       </div>
-   
-      <Route exact path='/' component={HomePage} />
-      <Route exact path='/profile2' component={Profile2} />
-      <Route exact path='/addtrip' component={FormikTripForm} />
-      <Route exact path='/login' component={FormikLogin} />
-      <Route exact path='/signup' component={FormikRegister} />
+
+      <UserContext.Provider value={{ loggedUser, setLoggedUser }}>
+      <TripsContext.Provider value={{ trips, setTrips }}>
+      <TripContext.Provider value={{ trip, setTrip }}>
+        <Route exact path='/' render={(props) => <HomePage {...props} />} />
+      </TripContext.Provider>
+      </TripsContext.Provider>
+      </UserContext.Provider>
+      {/* <Route exact path='/profile2' component={Profile2} /> */}
       
       <TripsContext.Provider value={{ trips, setTrips }}>
       <TripContext.Provider value={{ trip, setTrip }}>
-        <Route exact path='/profiletest' component={ProfileTest} />
+        <Route exact path='/edittrip' render={(props) => <FormikEditTripForm {...props} /> } />
+      </TripContext.Provider>
+      </TripsContext.Provider>
+
+      <Route exact path='/addtrip' component={FormikTripForm} />
+
+      <UserContext.Provider value={{ loggedUser, setLoggedUser }} >
+        <Route exact path='/login' component={FormikLogin} />
+      </UserContext.Provider>
+
+      <Route exact path='/signup' component={FormikRegister} />
+      
+      <UserContext.Provider value={{ loggedUser, setLoggedUser }}>
+      <TripsContext.Provider value={{ trips, setTrips }}>
+      <TripContext.Provider value={{ trip, setTrip }}>
+        <Route path='/profile' render={(props) => <Profile2 {...props} />} />
         </TripContext.Provider>
       </TripsContext.Provider>
-      <Route path='/trips/:id' render={(props) => <TripDetails {...props} />} />
+      </UserContext.Provider>
 
-
+      <UserContext.Provider value={{ loggedUser, setLoggedUser }}>
+        <Route path='/trips/:id' render={(props) => <TripDetails {...props} />} />
+      </UserContext.Provider>
+      <Footer />
     </div>
   );
 }

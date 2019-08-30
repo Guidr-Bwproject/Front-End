@@ -10,6 +10,8 @@ import { TripsContext } from '../contexts/TripsContext'
 export default function ProfileTest() {
   const {trips, setTrips} = useContext(TripsContext)
 
+  
+
   return(
     <section className="homePageView">
       <StyledHomePage>

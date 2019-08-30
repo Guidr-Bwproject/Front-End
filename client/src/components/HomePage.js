@@ -1,25 +1,30 @@
-import React, {useEffect, useState} from "react";
-import axios from "axios";
+import React, {useEffect, useState, useContext} from "react";
+// import axios from "axios";
 import HomePageCards from "./HomePageCards";
 import styled from "styled-components";
 import arrowIMG from '../imgs/arrow-alt-circle-down-regular.svg';
 import HomePageProfileCard from "./HomePageProfileCard";
 import AboutCreatorCard from "./AboutCreators"
+import { TripsContext } from "../contexts/TripsContext"
+import { UserContext } from "../contexts/UserContext"
 
-export default function HomePage() {
-  const [trips, setTrips] = useState([]);
+export default function HomePage(props) {
+  const {trips, setTrips} = useContext(TripsContext)
+  const {loggedUser, setLoggedUser} = useContext(UserContext)
+  console.log('Home Page trips', trips)
+  // const [trips, setTrips] = useState([]);
 
-  useEffect(() =>{
-      axios
-      .get('https://guidr-app.herokuapp.com/api/trips')
-      .then(response =>{
-        setTrips(response.data)
-        console.log('Trips Data Response', response.data);
-      })
-      .catch(error =>{
-        console.log(error);
-      });
-  },[]);
+  // useEffect(() =>{
+  //     axios
+  //     .get('https://guidr-app.herokuapp.com/api/trips')
+  //     .then(response =>{
+  //       setTrips(response.data)
+  //       console.log('Trips Data Response', response.data);
+  //     })
+  //     .catch(error =>{
+  //       console.log(error);
+  //     });
+  // },[]);
 
   return(
     <section className="homePageView">
@@ -27,12 +32,12 @@ export default function HomePage() {
         <div className="homeView">
           <div className="leftContent">
             <h4 className="leftTitle">Welcome!</h4>
-            <HomePageProfileCard />
+            <HomePageProfileCard /> 
           </div>
           <div className="middleContent">
             <h4 className='title'>Current Trips <img alt="" className='arrowIMG' src={arrowIMG} width='50' height='50' color='white' /> </h4>
-            {trips.map(trip =>{
-              return <HomePageCards key={trip.id} {...trip} trip={trip} id={trip.id}/>;
+            {trips.map((trip, props) =>{
+              return <HomePageCards {...props} key={trip.id} {...trip} trip={trip} id={trip.id}/>;
             })}
           </div>
           <div className="rightContent">

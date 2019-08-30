@@ -1,20 +1,23 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Card, Image, Button} from "semantic-ui-react";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import arrowIMG from '../imgs/arrow-alt-circle-down-regular.svg';
+import { UserContext } from "../contexts/UserContext"
 
 
 export default function TripDetailCard ({details}){
+  const {loggedUser} = useContext(UserContext)
   return(
     <StyledTripCards>
       <div className="tripCard">
         <Card className="CardContainer">
           <Image src={details.image} alt="a beautiful landscape" fluid className="cardImage"/>
+          {/* <Image src={`https://randomuser.me/api/portraits/women/${details.user_id}.jpg`} alt="the guide's face" fluid className="cardImage"/> */}
           <Card.Content className="cardContent">
             <Card.Header className="cardHeader">{details.title}</Card.Header>
             <div className="cardMiddle">
-              <Card.Meta className="guideName">Guide Name</Card.Meta>
+              <Card.Meta className="guideName">Guided Trip </Card.Meta>
               <Card.Meta className="duration">Start Date: {details.date} | Duration: {details.duration}</Card.Meta>
               <Card.Description className="location">Join us in {details.location}</Card.Description>
               <Card.Description className="description">{details.description}</Card.Description>
