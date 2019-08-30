@@ -1,10 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Card, Image} from "semantic-ui-react";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
+import { TripsContext } from "../contexts/TripsContext"
+import { TripContext } from "../contexts/TripContext"
 
-
-export default function HomePageCards ({title, date, description, image, id}){
+export default function HomePageCards ({ props, title, date, description, image, id}){
+  
+  const {trips, setTrips} = useContext(TripsContext)
+  const {trip, setTrip} = useContext(TripContext)
+  
   return(
     <StyledHomeCards>
       <div className="homeCard">
@@ -19,6 +24,10 @@ export default function HomePageCards ({title, date, description, image, id}){
             <Card.Description className="cardLink">
               <Link to={`/trips/${id}`} className="homePageCardLink">Click here for trip details</Link>
             </Card.Description>
+              <Link to="/edittrip" onClick={(event) => {
+                setTrip(trips.find(i => i.id === id))
+              }}>edit trip
+            </Link>
           </Card.Content>
         </Card>
       </div>

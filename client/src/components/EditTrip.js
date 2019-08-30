@@ -5,24 +5,24 @@ import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import axios from 'axios';
-import { Link, history } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { TripContext } from '../contexts/TripContext'
 import { TripsContext } from '../contexts/TripsContext';
 
 // *** Edit TRIP FORM *** //
 
 
-const TripForm = ({ errors, touched, values, status }) => { //{trips} gets passed into from the profile where there is state that makes the axios request
+const TripForm = ({ errors, touched, values, status }) => { 
     
     const {trip, setTrip} = useContext(TripContext)
     const {trips, setTrips} = useContext(TripsContext)
 
     const saveEdit = (event) => {
-      event.preventDefault()
+      // event.preventDefault()
       axiosWithAuth()
           .put(`https://guidr-app.herokuapp.com/api/trips/${trip.id}`, trip)
           .then(res => {
-            console.log(res.config.data)
+            console.log(JSON.parse(res.config.data))
             // setTrips(trips);
             // resetForm();
             // setSubmitting();
@@ -31,18 +31,6 @@ const TripForm = ({ errors, touched, values, status }) => { //{trips} gets passe
           .catch(err => console.log(err.response));
       }
     
-    const getTrips = (event) => {
-      event.preventDefault()
-      axios
-        .get('https://guidr-app.herokuapp.com/api/trips')
-        .then(res => {
-          setTrips(res.data)
-        })
-        .catch(err => {
-          console.log(err.response)
-        })
-    }
-
     const handleChanges = event => {
       event.persist();
       event.preventDefault();
@@ -129,7 +117,9 @@ const TripForm = ({ errors, touched, values, status }) => { //{trips} gets passe
                     <p classname="error">{errors.image}</p>
                 )}
 
-                <button className="submitButton" type="submit">Save</button>
+                <Link to="/profile" className="submitButton" onClick={(event) => {
+                  saveEdit()
+                }}>Save</Link>
                 <Link className="submitButton" to='/profile'>Cancel</Link>
             </Form>
 
@@ -139,7 +129,7 @@ const TripForm = ({ errors, touched, values, status }) => { //{trips} gets passe
 
 // *** FORMIK - PROFILE FROM *** //
 
-const FormikTripForm = withFormik({
+const FormikEditTripForm = withFormik({
     mapPropsToValues({ title, description, professional, duration, date, location, image, user_id }) {
         return {
           title: title || '',
@@ -182,7 +172,7 @@ const FormikTripForm = withFormik({
 
 })(TripForm);
 
-export default FormikTripForm;
+export default FormikEditTripForm;
 
 
 

@@ -74,9 +74,10 @@ const FormikLogin = withFormik({
     axios 
       .post('https://guidr-app.herokuapp.com/api/auth/login', user) // ENTER LOGIN ENDPOINT
       .then(res => {
+        console.log(res)
         setStatus(res.data)
         localStorage.setItem('token', res.data.token)
-        props.history.push('/profile')
+        props.history.push('/profile2')
       })
       .catch(err => console.log(err.response))
   }
