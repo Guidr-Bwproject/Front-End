@@ -44,7 +44,7 @@ console.log(loggedUser)
     .catch(error =>{
       console.log(error);
     });
-},[trips]);
+},[]);
 
   return (
     <div className="App">

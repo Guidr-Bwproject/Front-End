@@ -36,7 +36,8 @@ export default function Profile2() {
   //       console.log('things')
   //     )
   // }
-
+  const tripsByUserId = trips.filter(i => i.user_id === loggedUser.id)
+  console.log('Filtered trips', tripsByUserId)
   return(
     <section className="ProfileView">
       <StyledProfilePage>
@@ -48,7 +49,7 @@ export default function Profile2() {
                             <Button href="https://guidrapp.netlify.com/stories-page.html">Read Stories</Button>
                             <Link to="/addtrip">Log A Trip</Link>
                         </div>
-                        {trips.map(trip =>{
+                        {tripsByUserId.map(trip =>{
                             return <HomePageCards 
                                       key={trip.id} 
                                       id={trip.id} 

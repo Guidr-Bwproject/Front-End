@@ -12,7 +12,7 @@ export default function HomePageCards ({ props, title, date, description, image,
   const {trips, setTrips} = useContext(TripsContext)
   const {trip, setTrip} = useContext(TripContext)
   const {loggedUser, setLoggedUser} = useContext(UserContext)
-
+  console.log(id)
   const deleteTrip = (event) => {
     
     axiosWithAuth()
