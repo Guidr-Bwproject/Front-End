@@ -31,9 +31,8 @@ export default function HomePageCards ({image, title, date, description, id, use
           <Card.Content className="cardContent">
             <Card.Header className="cardHeader">{title}</Card.Header>
             <Card.Meta className="cardMeta">
-            {loggedUser && <Link to="#" className="cardGuideLink">Guide | {loggedUser.name} {date}</Link>}
-              <Image src={`https://randomuser.me/api/portraits/women/${user_id}.jpg`} alt="the guide's face" fluid className="guideImage"/>
-              <Link to="#" className="cardGuideLink">{date}</Link>
+            <Image src={`https://randomuser.me/api/portraits/women/${user_id}.jpg`} alt="the guide's face" fluid className="guideImage"/>
+            {loggedUser && <Link to="#" className="cardGuideLink">{date}</Link>}
             </Card.Meta>
             <Card.Description className="description">{description}</Card.Description>
             <Card.Description className="cardLink">
