@@ -17,7 +17,10 @@ export default function HomePageProfileCard (){
             <Card.Header className="cardHeader">
               <Link to="/profile" className="userLink">{loggedUser.username}</Link>
             </Card.Header>
+            <Card.Meta className="cardMeta">{loggedUser.title}</Card.Meta>
+            <Card.Meta className="cardMeta">I've been a guide for {loggedUser.time_as_guide} years.</Card.Meta>
             <Card.Meta className="cardMeta">Guidr Pro</Card.Meta>
+            <Card.Meta className="cardMeta">{loggedUser.tagline}</Card.Meta>
           </Card.Content>
         </Card>
       </div>
