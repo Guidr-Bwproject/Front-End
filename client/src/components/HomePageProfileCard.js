@@ -14,13 +14,15 @@ export default function HomePageProfileCard (){
         <Card className="profileCardContainer">
           <Image src={`https://randomuser.me/api/portraits/women/${loggedUser.id}.jpg`} fluid className="image"/>
           <Card.Content className="cardContent">
-            <Card.Header className="cardHeader">
-              <Link to="/profile" className="userLink">{loggedUser.username}</Link>
-            </Card.Header>
-            <Card.Meta className="cardMeta">{loggedUser.title}</Card.Meta>
-            <Card.Meta className="cardMeta">I've been a guide for {loggedUser.time_as_guide} years.</Card.Meta>
-            <Card.Meta className="cardMeta">Guidr Pro</Card.Meta>
-            <Card.Meta className="cardMeta">{loggedUser.tagline}</Card.Meta>
+            <div className="guideInfo">
+              <Card.Header className="cardHeader">
+                <Link to="/profile" className="userLink">{loggedUser.username}</Link>
+              </Card.Header>
+              <Card.Meta className="cardMeta">{loggedUser.title}</Card.Meta>
+              <Card.Meta className="cardMeta">I've been a guide for {loggedUser.time_as_guide} years.</Card.Meta>
+              <Card.Meta className="cardMeta">Guidr Pro</Card.Meta>
+              <Card.Meta className="cardMeta">{loggedUser.tagline}</Card.Meta>
+            </div>
           </Card.Content>
         </Card>
       </div>
@@ -51,10 +53,17 @@ opacity: .8;
   padding: 2%;
 }
 
+.guideInfo{
+  line-height: 35px;
+}
+
 .cardHeader{
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #314b11;
   font-weight: bold;
+  margin-bottom: 3%;
+  border-bottom: 1px solid black;
+  padding-bottom: 5%;
 }
 
 .userLink {
