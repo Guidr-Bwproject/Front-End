@@ -7,7 +7,7 @@ import { TripContext } from "../contexts/TripContext"
 import { UserContext } from "../contexts/UserContext"
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
-export default function HomePageCards ({ props, title, date, description, image, id}){
+export default function HomePageCards ({image, title, date, description, id, user_id}){
   
   const {trips, setTrips} = useContext(TripsContext)
   const {trip, setTrip} = useContext(TripContext)
@@ -31,7 +31,8 @@ export default function HomePageCards ({ props, title, date, description, image,
           <Card.Content className="cardContent">
             <Card.Header className="cardHeader">{title}</Card.Header>
             <Card.Meta className="cardMeta">
-              <Link to="#" className="cardGuideLink">Guide | {loggedUser.name} {date}</Link>
+              <Image src={`https://randomuser.me/api/portraits/women/${user_id}.jpg`} alt="the guide's face" fluid className="guideImage"/>
+              <Link to="#" className="cardGuideLink">{date}</Link>
             </Card.Meta>
             <Card.Description className="description">{description}</Card.Description>
             <Card.Description className="cardLink">
@@ -75,15 +76,29 @@ border-radius: 10px 10px 0px 0px;
 
 .cardHeader{
 text-align: left;
-font-size: 2rem;
+font-size: 2.5rem;
 font-weight: bold;
 color: #314b11;
 font-family: "Roboto";
 }
 
 .cardMeta{
-  text-align: left;
-  padding: 1.5%;}
+  width: 30%;
+  padding: 1.5%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  @media screen and (max-width: 500px){
+    width: 50%;
+  }
+
+  .guideImage{
+    border-radius: 100px;
+    width: 60px;
+    height: 60px;
+  }
+}
 
 .cardGuideLink{
   color: #314b11;
@@ -103,11 +118,13 @@ font-family: "Roboto";
 
 .cardLink{
   padding: 2%;
+  text-align: center;
 }
 
 .homePageCardLink {
   color: #314b11;
   font-weight: bold;
+
 }
 
 .homePageCardLink:hover{
