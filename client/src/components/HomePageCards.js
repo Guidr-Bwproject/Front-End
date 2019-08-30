@@ -4,11 +4,13 @@ import {Link} from "react-router-dom";
 import styled from "styled-components";
 import { TripsContext } from "../contexts/TripsContext"
 import { TripContext } from "../contexts/TripContext"
+import { UserContext } from "../contexts/UserContext"
 
 export default function HomePageCards ({ props, title, date, description, image, id}){
   
   const {trips, setTrips} = useContext(TripsContext)
   const {trip, setTrip} = useContext(TripContext)
+  const {loggedUser, setLoggedUser} = useContext(UserContext)
   
   return(
     <StyledHomeCards>
@@ -18,7 +20,7 @@ export default function HomePageCards ({ props, title, date, description, image,
           <Card.Content className="cardContent">
             <Card.Header className="cardHeader">{title}</Card.Header>
             <Card.Meta className="cardMeta">
-              <Link to="#" className="cardGuideLink">Guide Name | {date}</Link>
+              <Link to="#" className="cardGuideLink">Guide | {loggedUser.name} {date}</Link>
             </Card.Meta>
             <Card.Description className="description">{description}</Card.Description>
             <Card.Description className="cardLink">

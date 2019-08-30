@@ -6,9 +6,11 @@ import arrowIMG from '../imgs/arrow-alt-circle-down-regular.svg';
 import HomePageProfileCard from "./HomePageProfileCard";
 import AboutCreatorCard from "./AboutCreators"
 import { TripsContext } from "../contexts/TripsContext"
+import { UserContext } from "../contexts/UserContext"
 
 export default function HomePage(props) {
   const {trips, setTrips} = useContext(TripsContext)
+  const {loggedUser, setLoggedUser} = useContext(UserContext)
   console.log('Home Page trips', trips)
   // const [trips, setTrips] = useState([]);
 
@@ -30,7 +32,7 @@ export default function HomePage(props) {
         <div className="homeView">
           <div className="leftContent">
             <h4 className="leftTitle">Welcome!</h4>
-            <HomePageProfileCard />
+            <HomePageProfileCard /> 
           </div>
           <div className="middleContent">
             <h4 className='title'>Current Trips <img alt="" className='arrowIMG' src={arrowIMG} width='50' height='50' color='white' /> </h4>

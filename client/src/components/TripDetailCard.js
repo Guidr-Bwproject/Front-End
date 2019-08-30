@@ -1,11 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Card, Image, Button} from "semantic-ui-react";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import arrowIMG from '../imgs/arrow-alt-circle-down-regular.svg';
+import { UserContext } from "../contexts/UserContext"
 
 
 export default function TripDetailCard ({details}){
+  const {loggedUser} = useContext(UserContext)
   return(
     <StyledTripCards>
       <div className="tripCard">
@@ -14,7 +16,7 @@ export default function TripDetailCard ({details}){
           <Card.Content className="cardContent">
             <Card.Header className="cardHeader">{details.title}</Card.Header>
             <div className="cardMiddle">
-              <Card.Meta className="guideName">Guide Name</Card.Meta>
+              <Card.Meta className="guideName">Guide Name: {loggedUser.username}</Card.Meta>
               <Card.Meta className="duration">Start Date: {details.date} | Duration: {details.duration}</Card.Meta>
               <Card.Description className="location">Join us in {details.location}</Card.Description>
               <Card.Description className="description">{details.description}</Card.Description>

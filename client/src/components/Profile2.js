@@ -8,10 +8,12 @@ import HomePageCards from "./HomePageCards";
 import { TripsContext } from "../contexts/TripsContext";
 import FormikEditTripForm from "../components/EditTrip"
 import { Link } from 'react-router-dom'
+import { UserContext } from "../contexts/UserContext";
 
 
 export default function Profile2() {
   
+  const {loggedUser, setLoggedUser} = useContext(UserContext)
   const {trips, setTrips} = useContext(TripsContext)
   console.log(trips)
   

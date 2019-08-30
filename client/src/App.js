@@ -23,9 +23,16 @@ function App() {
 
   const [trips, setTrips] = useState([])
   const [trip, setTrip] = useState({})
-  const [user, setUser] = useState({})
+  const [loggedUser, setLoggedUser] = useState({})
   // console.log('trip', trip)
 
+ 
+  const getUser = JSON.parse(localStorage.getItem('user'))
+  console.log(getUser)
+  useEffect(() => {
+    setLoggedUser(getUser)
+  }, [])
+console.log(loggedUser)
   useEffect(() =>{
     axios
     .get('https://guidr-app.herokuapp.com/api/trips')
@@ -36,7 +43,7 @@ function App() {
     .catch(error =>{
       console.log(error);
     });
-},[trips]);
+},[]);
 
   return (
     <div className="App">
@@ -55,12 +62,14 @@ function App() {
         </div>
        
       </div>
-   
+
+      <UserContext.Provider value={{ loggedUser, setLoggedUser }}>
       <TripsContext.Provider value={{ trips, setTrips }}>
       <TripContext.Provider value={{ trip, setTrip }}>
         <Route exact path='/' render={(props) => <HomePage {...props} />} />
       </TripContext.Provider>
       </TripsContext.Provider>
+      </UserContext.Provider>
       {/* <Route exact path='/profile2' component={Profile2} /> */}
       
       <TripsContext.Provider value={{ trips, setTrips }}>
@@ -71,19 +80,23 @@ function App() {
 
       <Route exact path='/addtrip' component={FormikTripForm} />
 
-      <UserContext.Provider value={{ user, setUser }} >
+      <UserContext.Provider value={{ loggedUser, setLoggedUser }} >
         <Route exact path='/login' component={FormikLogin} />
       </UserContext.Provider>
 
       <Route exact path='/signup' component={FormikRegister} />
       
+      <UserContext.Provider value={{ loggedUser, setLoggedUser }}>
       <TripsContext.Provider value={{ trips, setTrips }}>
       <TripContext.Provider value={{ trip, setTrip }}>
         <Route path='/profile' render={(props) => <Profile2 {...props} />} />
         </TripContext.Provider>
       </TripsContext.Provider>
-      <Route path='/trips/:id' render={(props) => <TripDetails {...props} />} />
+      </UserContext.Provider>
 
+      <UserContext.Provider value={{ loggedUser, setLoggedUser }}>
+        <Route path='/trips/:id' render={(props) => <TripDetails {...props} />} />
+      </UserContext.Provider>
       <Footer />
     </div>
   );

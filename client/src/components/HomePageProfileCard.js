@@ -1,18 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import {Card, Image} from "semantic-ui-react";
 import JennHiking from "../imgs/JennHiking2.jpg";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
+import { UserContext } from "../contexts/UserContext"
 
 export default function HomePageProfileCard (){
+  const {loggedUser, setLoggedUser} = useContext(UserContext)
+
   return(
     <StyledProfileCard>
       <div className="profileCard">
         <Card className="profileCardContainer">
-          <Image src={JennHiking} fluid className="image"/>
+          <Image src={`https://randomuser.me/api/portraits/women/${loggedUser.id}.jpg`} fluid className="image"/>
           <Card.Content className="cardContent">
             <Card.Header className="cardHeader">
-              <Link to="/profile2" className="userLink">User Name</Link>
+              <Link to="/profile" className="userLink">{loggedUser.username}</Link>
             </Card.Header>
             <Card.Meta className="cardMeta">Guidr Pro</Card.Meta>
           </Card.Content>
