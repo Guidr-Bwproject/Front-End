@@ -31,7 +31,7 @@ export default function HomePageCards ({ props, title, date, description, image,
           <Card.Content className="cardContent">
             <Card.Header className="cardHeader">{title}</Card.Header>
             <Card.Meta className="cardMeta">
-              <Link to="#" className="cardGuideLink">Guide | {loggedUser.name} {date}</Link>
+            {loggedUser && <Link to="#" className="cardGuideLink">Guide | {loggedUser.name} {date}</Link>}
             </Card.Meta>
             <Card.Description className="description">{description}</Card.Description>
             <Card.Description className="cardLink">

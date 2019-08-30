@@ -24,7 +24,7 @@ const TripForm = ({ errors, touched, values, status }) => {
 
     const handleChanges = event => {
       event.persist();
-      event.preventDefault();
+      // event.preventDefault();
       setTrip({
         ...trip,
         [event.target.name]: event.target.value

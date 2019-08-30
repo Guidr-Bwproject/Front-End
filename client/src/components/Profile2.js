@@ -36,25 +36,31 @@ export default function Profile2() {
   //       console.log('things')
   //     )
   // }
-  const tripsByUserId = trips.filter(i => i.user_id === loggedUser.id)
-  console.log('Filtered trips', tripsByUserId)
+
+// if (loggedUser) return trips.filter(i => i.user_id === loggedUser.id)
+
+
+
+
+// console.log('USERRRRR', tripsByUserId)
+  
   return(
     <section className="ProfileView">
       <StyledProfilePage>
         <div className="ProfileView">
             <div className="mainContent">
                   <h4 className='title'>About Me <img className='arrowIMG' src={arrowIMG} width='50' height='50' color='white' /> </h4> 
-                    <HomePageProfileCard />
+                    {loggedUser && <HomePageProfileCard />}
                         <div className="buttons">
-                            <Button href="https://guidrapp.netlify.com/stories-page.html">Read Stories</Button>
-                            <Link to="/addtrip">Log A Trip</Link>
+                            {loggedUser && <Button href="https://guidrapp.netlify.com/stories-page.html">Read Stories</Button>}
+                            {loggedUser && <Link to="/addtrip">Log A Trip</Link>}
                         </div>
-                        {tripsByUserId.map(trip =>{
+                        {loggedUser && trips.map(trip =>{
                             return <HomePageCards 
                                       key={trip.id} 
                                       id={trip.id} 
                                       userID={trip.user_id} 
-                                      {...trip} />; // NOT SURE HOW TO LIST TRIPS OF SINGLE USER??
+                                      {...trip} />;
                         })}
                             
             </div>

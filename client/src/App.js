@@ -23,28 +23,25 @@ function App() {
 
   const [trips, setTrips] = useState([])
   const [trip, setTrip] = useState({})
-  const [loggedUser, setLoggedUser] = useState({id: 2})
+  const [loggedUser, setLoggedUser] = useState()
   // console.log('trip', trip)
 
  
   const getUser = JSON.parse(localStorage.getItem('user'))
-  console.log(getUser)
   useEffect(() => {
     setLoggedUser(getUser)
   }, [])
 
-console.log(loggedUser)
   useEffect(() =>{
     axios
     .get('https://guidr-app.herokuapp.com/api/trips')
     .then(response =>{
       setTrips(response.data)
-      console.log('Trips Data Response', response.data);
     })
     .catch(error =>{
       console.log(error);
     });
-},[]);
+},[trips]);
 
   return (
     <div className="App">
