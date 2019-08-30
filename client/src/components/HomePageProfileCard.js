@@ -11,20 +11,20 @@ export default function HomePageProfileCard (){
   return(
     <StyledProfileCard>
       <div className="profileCard">
-        <Card className="profileCardContainer">
-          <Image src={`https://randomuser.me/api/portraits/women/${loggedUser.id}.jpg`} fluid className="image"/>
+        {loggedUser && <Card className="profileCardContainer">
+        {loggedUser && <Image src={`https://randomuser.me/api/portraits/women/${loggedUser.id}.jpg`} fluid className="image"/>}
           <Card.Content className="cardContent">
-            <div className="guideInfo">
-              <Card.Header className="cardHeader">
-                <Link to="/profile" className="userLink">{loggedUser.username}</Link>
+          <div className="guideInfo">
+            <Card.Header className="cardHeader">
+              {loggedUser && <Link to="/profile" className="userLink">{loggedUser.username}</Link>}
               </Card.Header>
-              <Card.Meta className="cardMeta">{loggedUser.title}</Card.Meta>
-              <Card.Meta className="cardMeta">I've been a guide for {loggedUser.time_as_guide} years.</Card.Meta>
+              {loggedUser && <Card.Meta className="cardMeta">{loggedUser.title}</Card.Meta>}
+              {loggedUser && <Card.Meta className="cardMeta">I've been a guide for {loggedUser.time_as_guide} years.</Card.Meta>}
               <Card.Meta className="cardMeta">Guidr Pro</Card.Meta>
-              <Card.Meta className="cardMeta">{loggedUser.tagline}</Card.Meta>
+              {loggedUser && <Card.Meta className="cardMeta">{loggedUser.tagline}</Card.Meta>}
             </div>
           </Card.Content>
-        </Card>
+        </Card>}
       </div>
     </StyledProfileCard>
   )

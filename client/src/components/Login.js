@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import * as Yup from 'yup'
 import axios from 'axios';
 import { Form, Field, withFormik } from 'formik';
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import { UserContext } from "../contexts/UserContext"
 
 const Login = ({ errors, touched, values, status }) => {

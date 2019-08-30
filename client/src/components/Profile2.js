@@ -36,25 +36,31 @@ export default function Profile2() {
   //       console.log('things')
   //     )
   // }
-  const tripsByUserId = trips.filter(i => i.user_id === loggedUser.id)
-  console.log('Filtered trips', tripsByUserId)
+
+// if (loggedUser) return trips.filter(i => i.user_id === loggedUser.id)
+
+
+
+
+// console.log('USERRRRR', tripsByUserId)
+  
   return(
     <section className="ProfileView">
       <StyledProfilePage>
         <div className="ProfileView">
             <div className="mainContent">
                   <h4 className='title'>About Me <img className='arrowIMG' src={arrowIMG} width='50' height='50' color='white' /> </h4> 
-                    <HomePageProfileCard />
+                    {loggedUser && <HomePageProfileCard />}
                         <div className="buttons">
-                            <Button href="https://guidrapp.netlify.com/stories-page.html">Read Stories</Button>
-                            <Link to="/addtrip">Log A Trip</Link>
+                            {loggedUser && <Button className="Button" href="https://guidrapp.netlify.com/stories-page.html">Read Stories</Button>}
+                            {loggedUser && <Link className="Button" to="/addtrip">Log A Trip</Link>}
                         </div>
-                        {tripsByUserId.map(trip =>{
+                        {loggedUser && trips.map(trip =>{
                             return <HomePageCards 
                                       key={trip.id} 
                                       id={trip.id} 
                                       userID={trip.user_id} 
-                                      {...trip} />; // NOT SURE HOW TO LIST TRIPS OF SINGLE USER??
+                                      {...trip} />;
                         })}
                             
             </div>
@@ -87,13 +93,14 @@ const StyledProfilePage = styled.div `
     display: flex;
     justify-content: space between;
 }
-.buttons Button{
+.buttons .Button{
   background-color: #314b11;
   color: white;
   width: 100%;
   border-radius: 10px;
   border: solid 3px #314b11;
   font-size: 2rem;
-  padding: 3%;
+  padding: 2%;
+  margin: 25px;
 }
 `;
