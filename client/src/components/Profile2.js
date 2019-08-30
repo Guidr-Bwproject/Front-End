@@ -52,8 +52,8 @@ export default function Profile2() {
                   <h4 className='title'>About Me <img className='arrowIMG' src={arrowIMG} width='50' height='50' color='white' /> </h4> 
                     {loggedUser && <HomePageProfileCard />}
                         <div className="buttons">
-                            {loggedUser && <Button href="https://guidrapp.netlify.com/stories-page.html">Read Stories</Button>}
-                            {loggedUser && <Link to="/addtrip">Log A Trip</Link>}
+                            {loggedUser && <Button className="Button" href="https://guidrapp.netlify.com/stories-page.html">Read Stories</Button>}
+                            {loggedUser && <Link className="Button" to="/addtrip">Log A Trip</Link>}
                         </div>
                         {loggedUser && trips.map(trip =>{
                             return <HomePageCards 
@@ -93,13 +93,14 @@ const StyledProfilePage = styled.div `
     display: flex;
     justify-content: space between;
 }
-.buttons Button{
+.buttons .Button{
   background-color: #314b11;
   color: white;
   width: 100%;
   border-radius: 10px;
   border: solid 3px #314b11;
   font-size: 2rem;
-  padding: 3%;
+  padding: 2%;
+  margin: 25px;
 }
 `;
