@@ -13,13 +13,17 @@ export default function TripDetailCard ({details}){
       <div className="tripCard">
         <Card className="CardContainer">
           <Image src={details.image} alt="a beautiful landscape" fluid className="cardImage"/>
-          {/* <Image src={`https://randomuser.me/api/portraits/women/${details.user_id}.jpg`} alt="the guide's face" fluid className="cardImage"/> */}
           <Card.Content className="cardContent">
             <Card.Header className="cardHeader">{details.title}</Card.Header>
-            <div className="cardMiddle">
-              <Card.Meta className="guideName">Guided Trip </Card.Meta>
-              <Card.Meta className="duration">Start Date: {details.date} | Duration: {details.duration}</Card.Meta>
-              <Card.Description className="location">Join us in {details.location}</Card.Description>
+            <div className="cardMiddle">       
+              <div className="middleTop">
+                <Image src={`https://randomuser.me/api/portraits/women/${details.user_id}.jpg`} alt="the guide's face" fluid className="guideImage"/>
+                <div className="topContent">
+                  <Card.Meta className="guideName">Guided Trip </Card.Meta>             
+                  <Card.Meta className="duration">Start Date: {details.date} | Duration: {details.duration}</Card.Meta>
+                  <Card.Description className="location">Join us in {details.location}</Card.Description>
+                </div>
+              </div>
               <Card.Description className="description">{details.description}</Card.Description>
             </div>
             <Card.Description className="cardBottom">
@@ -53,6 +57,27 @@ border-radius: 10px 10px 0px 0px;
   margin: auto;
   padding: 3% 0;
   line-height: 35px;
+
+  .guideImage{
+    border-radius: 100px;
+    height: 150px;
+    width:150px;
+  }
+}
+
+.middleTop{
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .topContent{
+    padding-left: 3%;
+  }
+}
+
+.description{
+  padding-top: 2%;
 }
 
 .cardHeader{

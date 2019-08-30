@@ -63,7 +63,7 @@ opacity: .8;
   font-weight: bold;
   margin-bottom: 3%;
   border-bottom: 1px solid black;
-  padding-bottom: 5%;
+  padding-bottom: 7%;
 }
 
 .userLink {
