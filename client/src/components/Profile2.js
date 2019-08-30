@@ -1,28 +1,41 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import axios from "axios";
 import styled from "styled-components";
 import arrowIMG from '../imgs/arrow-alt-circle-down-regular.svg';
 import {Button} from "semantic-ui-react";
 import HomePageProfileCard from "./HomePageProfileCard";
 import HomePageCards from "./HomePageCards";
-
-
+import { TripsContext } from "../contexts/TripsContext";
+import FormikEditTripForm from "../components/EditTrip"
+import { Link } from 'react-router-dom'
+import { UserContext } from "../contexts/UserContext";
 
 
 export default function Profile2() {
-  const [trips, setTrips] = useState([]);
+  
+  const {loggedUser, setLoggedUser} = useContext(UserContext)
+  const {trips, setTrips} = useContext(TripsContext)
+  console.log(trips)
+  
+  // const [trips, setTrips] = useState([]);
 
-  useEffect(() =>{
-    axios
-      .get('https://guidr-app.herokuapp.com/api/trips') // NOT SURE HOW TO LIST TRIPS OF SINGLE USER??
-      .then(response =>{
-        setTrips(response.data)
-        console.log(trips);
-      })
-      .catch(error =>{
-        console.log(error);
-      });
-  },[]);
+  // useEffect(() =>{
+  //   axios
+  //     .get('https://guidr-app.herokuapp.com/api/trips') // NOT SURE HOW TO LIST TRIPS OF SINGLE USER??
+  //     .then(response =>{
+  //       setTrips(response.data)
+  //       console.log(trips);
+  //     })
+  //     .catch(error =>{
+  //       console.log(error);
+  //     });
+  // },[]);
+
+  // const filteredArray = trips.filter(trip => trip.user_id = id) {}
+  //     return (
+  //       console.log('things')
+  //     )
+  // }
 
   return(
     <section className="ProfileView">
@@ -33,10 +46,14 @@ export default function Profile2() {
                     <HomePageProfileCard />
                         <div className="buttons">
                             <Button href="https://guidrapp.netlify.com/stories-page.html">Read Stories</Button>
-                            <Button href="/Profile">Log A Trip</Button>
+                            <Link to="/addtrip">Log A Trip</Link>
                         </div>
                         {trips.map(trip =>{
-                            return <HomePageCards key={trip.id} {...trip} />; // NOT SURE HOW TO LIST TRIPS OF SINGLE USER??
+                            return <HomePageCards 
+                                      key={trip.id} 
+                                      id={trip.id} 
+                                      userID={trip.user_id} 
+                                      {...trip} />; // NOT SURE HOW TO LIST TRIPS OF SINGLE USER??
                         })}
                             
             </div>

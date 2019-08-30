@@ -3,6 +3,7 @@ import {Card, Image, Button} from "semantic-ui-react";
 import Mountain from "../imgs/Mountain.jpg";
 import {Route, Link} from "react-router-dom";
 import styled from "styled-components";
+import {axiosWithAuth} from "../utils/axiosWithAuth"
 
 import { TripsContext } from '../contexts/TripsContext'
 import { TripContext } from '../contexts/TripContext'
@@ -11,6 +12,18 @@ export default function TripsTestCards({ username, title, date, description, ima
   
   const {trips, setTrips} = useContext(TripsContext)
   const {trip, setTrip} = useContext(TripContext)
+
+  const deleteTrip = (event) => {
+    // event.preventDefault()
+    axiosWithAuth()
+      .delete(`https://guidr-app.herokuapp.com/api/trips/${id}`)
+      .then(res => {
+        const newTripsArr = trips.filter(i => i.id !== id)
+        setTrips(newTripsArr)
+      })
+      .catch(err => console.log(err.response))
+  }
+
   return(
     <StyledHomeCards>
     <div className="homeCard">
@@ -34,6 +47,7 @@ export default function TripsTestCards({ username, title, date, description, ima
         setTrip(trips.find(i => i.id === id))
         console.log(trip)
       }}>edit trip</button>
+      <button type="button" onClick={deleteTrip}>delete trip</button>
     </Card>
     </div>
     </StyledHomeCards>

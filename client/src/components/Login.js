@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import * as Yup from 'yup'
 import axios from 'axios';
 import { Form, Field, withFormik } from 'formik';
 import {Link} from 'react-router-dom'
+import { UserContext } from "../contexts/UserContext"
 
-const Login = ({ history, errors, touched, values, status }) => {
+const Login = ({ errors, touched, values, status }) => {
   
+  const {loggedUser, setLoggedUser} = useContext(UserContext)
+  
+
+
   const [user, setUser] = useState({
         username: '',
         password: ''
@@ -72,10 +77,13 @@ const FormikLogin = withFormik({
 
   handleSubmit(user, {props, setStatus}) {
     axios 
-      .post('https://guidr-app.herokuapp.com/api/auth/login', user) // ENTER LOGIN ENDPOINT
+      .post('https://guidr-app.herokuapp.com/api/auth/login', user)
       .then(res => {
+        console.log(res)
         setStatus(res.data)
         localStorage.setItem('token', res.data.token)
+        // localStorage.setItem('user_id', res.data.user.id)
+        localStorage.setItem('user', JSON.stringify(res.data.user))
         props.history.push('/profile')
       })
       .catch(err => console.log(err.response))
